@@ -3,27 +3,18 @@ var camera;
 var controls;
 var scene;
 var renderer;
-var geometryStars = new THREE.SphereGeometry(400,15,15);
-var materialStars = new THREE.MeshLambertMaterial({
-	color: "rgb(255, 0, 0)"
-});
 
-var geometryPlanets = new THREE.SphereGeometry(50,50,10);
-var materialPlanets = new THREE.MeshLambertMaterial({
-	color: "#ffffff"
-});
-
-init();
-animate();
+init(); //Måste ligga i toppen
+animate(); //Måste ligga i toppen
 
 function init(){
-	//camera
+	//Kamera
 	camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 100000);
-	camera.position.z = 40000;
-	//controls
+	camera.position.z = 400;
+	//Kontrollerna som flyttar kameran
 	controls = new THREE.TrackballControls(camera);
 	controls.addEventListener("change", render);
-	controls.rotateSpeed = 25;
+	controls.rotateSpeed = 10; //Snabbheten på kameran
 	scene = new THREE.Scene();
 	renderer = new THREE.WebGLRenderer();
 	renderer.setSize(window.innerWidth, window.innerHeight);
@@ -36,69 +27,37 @@ function animate(){
 }
 
 function render(){
-	renderer.render(scene, camera);
+	renderer.render( scene, camera );
 };
 
-
 function randomGenerator(){
-	var number = Math.floor((Math.random() * 400000) - 200000);
+	var number = Math.floor((Math.random() * 40000) - 20000);
 	return number;
 };
 
-
-
-var light = new THREE.DirectionalLight("white", 1);
+var light = new THREE.DirectionalLight("white", 1); // Denna ska nog inte vara kvar.
 light.position.set(0,-450,400).normalize();
 scene.add(light);
-var sunInterval;
-$("#sun").on("click", function(){
-	var stringCount = 0;
-	for (var i = 0; i < 50; i++){
-		var mesh = new THREE.Mesh(geometryStars, materialStars);
-		mesh.position.set(randomGenerator(),randomGenerator(),randomGenerator());
-		scene.add(mesh);
+
+$("#sun").on("click", function(){ //testat lite jQuery
+	for (var i = 0; i < 1000; i++){
+		createObject.sphere.create();
+		var mesh = sunArray[i];
+	mesh.position.set(sunArray[i].position.x,sunArray[i].position.y,sunArray[i].position.z);
 	}
-	$("#information").empty();
-	clearInterval(sunInterval);
-	sunInterval = setInterval(function(){
-		var str = "";
-		if (sunText[stringCount] == "¤") str = "<br>";
-		else str = sunText[stringCount];
-		if (stringCount == sunText.length) clearInterval(sunInterval);
-		$("#information").append(str);
-		stringCount += 1;
-	}, (1000 / 30));
+	countedObjects = sunArray.length;
+	document.getElementById("countedObjects").innerHTML = countedObjects;
 });
-
-
 
 document.addEventListener("click", function(e){
 	var stringCount = 0;
 	if (e.srcElement.id == "planets"){
-		for (var i = 0; i < 1000; i++){
-			var mesh = new THREE.Mesh(geometryPlanets, materialPlanets);
-			mesh.position.set(randomGenerator(),randomGenerator(),randomGenerator());
-			scene.add(mesh);
-		}
+		drawWorld();
 	}
-
 	if (e.srcElement.id == "light"){
 		light.position.set(randomGenerator(),randomGenerator(),randomGenerator()).normalize();
 		scene.add(light);
-		setInterval(function(){
-			$("#information").append(lightText[stringCount]);
-			stringCount += 1;
-		},1000 / 60);
-		clearInterval(setInterval);
 	}
 	render();
 });
-
-
-
-
-var sunText = "> This method in THREEJS creates a sphere ¤> with the parameters  radius, ¤ > width segments, and  height segments ¤ > new THREE.SphereGeometry(0,0,0); ¤ > A random generator generates the position ¤ > of all the suns in the galaxy.";
-
-var lightText = "lorem	ipsum";
-
 

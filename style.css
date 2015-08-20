@@ -39,3 +39,9 @@ canvas {
 	width: 25%;
 	position: fixed;
 }
+
+#countedObjects {
+	position: fixed;
+	right: 0;
+	font-size: 60px;
+}
