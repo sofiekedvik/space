@@ -14,9 +14,9 @@ canvas {
 	max-width: 100%;
 	padding: 0;
 	margin: 0;
-  background-image: url(background.jpg);
+ /* background-image: url(background.jpg);
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat;*/
 }
 #overlay {
 	position: fixed;

@@ -23,7 +23,7 @@ var createObject = { // Liten "motor" som bygger objekt och stoppar dem i en arr
 			sunArray.push(mesh);
 		}
 	},
-	square2: {
+	sphere2: {
 		geometryStars: new THREE.SphereGeometry(800,15,15),
 		materialStars: new THREE.MeshLambertMaterial({
 			color: "rgb(255, 235, 0)" // rbg funkar
