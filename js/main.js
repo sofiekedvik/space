@@ -10,7 +10,7 @@ animate(); //Måste ligga i toppen
 function init(){
 	//Kamera
 	camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 400000);
-	camera.position.z = -2000;
+	camera.position.z = -100000;
 	//Kontrollerna som flyttar kameran
 	controls = new THREE.TrackballControls(camera);
 	controls.addEventListener("change", render); //För varje förändring som sker så renderas scenen
@@ -63,17 +63,12 @@ function randomGenerator(){
 	return number;
 };
 
-function randomString(length) {
-	return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1);
-}
-
 var light = new THREE.DirectionalLight("white", 1); // Denna ska nog inte vara kvar.
 light.position.set(0,-450,400).normalize();
 scene.add(light);
 
 $("#sun").on("click", function(){ //testat lite jQuery
 	for (var i = 0; i < 1000; i++){
-
 		createObject.sphere.create(randomGenerator() * randomGenerator ()); // Sätter unika id för de nya objekten
 	}
 	countedObjects = sunArray.length;
@@ -86,8 +81,10 @@ document.addEventListener("click", function(e){
 		drawWorld();
 	}
 	if (e.srcElement.id == "light"){
-		light.position.set(randomGenerator(),randomGenerator(),randomGenerator()).normalize();
-		scene.add(light);
+		for (var i = 0; i < 10; i++){
+			createObject.sphere2.create(randomGenerator() * randomGenerator ()); // Sätter unika id för de nya objekten
+		}
+
 	}
 	render();
 });
