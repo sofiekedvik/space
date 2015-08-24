@@ -23,10 +23,11 @@ var createObject = { // Liten "motor" som bygger objekt och stoppar dem i en arr
 			sunArray.push(mesh);
 		}
 	},
-	square2: {
+	sphere2: {
 		geometryStars: new THREE.SphereGeometry(800,15,15),
 		materialStars: new THREE.MeshLambertMaterial({
-			color: "rgb(255, 235, 0)" // rbg funkar
+			color: "rgb(255, 235, 0)",
+			ambient: 0x050505, // rbg funkar
 		}),
 		param1: sunParameters[0], // Diametern
 		param2: sunParameters[1],
