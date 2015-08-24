@@ -3,7 +3,7 @@ var sunParameters = [2,15,15];
 var countedObjects;
 var createObject = { // Liten "motor" som bygger objekt och stoppar dem i en array (sunArray)
 	sphere: {
-		geometryStars: new THREE.SphereGeometry(50,15,15),
+		geometryStars: new THREE.SphereGeometry(5,15,15),
 		materialStars: new THREE.MeshLambertMaterial({
 			color: "rgb(255, 255, 255)" // rbg funkar
 		}),
@@ -24,7 +24,7 @@ var createObject = { // Liten "motor" som bygger objekt och stoppar dem i en arr
 		}
 	},
 	sphere2: {
-		geometryStars: new THREE.SphereGeometry(800,15,15),
+		geometryStars: new THREE.SphereGeometry(15,15,15),
 		materialStars: new THREE.MeshLambertMaterial({
 			color: "rgb(255, 235, 0)",
 			ambient: 0x050505, // rbg funkar

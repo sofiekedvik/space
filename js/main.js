@@ -11,12 +11,12 @@ createSky();
 
 function init(){
 	//Kamera
-	camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 400000);
-	camera.position.z = 400;
+	camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000000);
+	camera.position.set(0,150,400);
 	//Kontrollerna som flyttar kameran
 	controls = new THREE.TrackballControls(camera);
 	controls.addEventListener("change", render); //För varje förändring som sker så renderas scenen
-	controls.rotateSpeed = 10; //Snabbheten på kameran
+	// controls.rotateSpeed = 10; //Snabbheten på kameran
 	scene = new THREE.Scene();
 	renderer = new THREE.WebGLRenderer();
 	renderer.setSize(window.innerWidth, window.innerHeight);
@@ -61,12 +61,12 @@ function drawWorld(){ // Ritar världen utifrån vad som finns i sunArray kommer
 
 
 function randomGenerator(){
-	var number = Math.floor((Math.random() * 40000) - 20000);
+	var number = Math.floor((Math.random() * 5000) - 2500);
 	return number;
 };
 
-var light = new THREE.DirectionalLight("white", 1); // Denna ska nog inte vara kvar.
-light.position.set(0,-450,400).normalize();
+var light = new THREE.PointLight("white", 1, 6000); // Denna ska nog inte vara kvar.
+light.position.set(50,50,50).normalize();
 scene.add(light);
 
 $("#sun").on("click", function(){ //testat lite jQuery

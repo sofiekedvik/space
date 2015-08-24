@@ -8,27 +8,15 @@ body, html {
 	color:grey;
 }
 
-body{
-/* background-image: url("mapping01.jpg");
-  background-size: contain;
-  background-repeat: no-repeat;*/
-
-}
 canvas {
-	 background-image: url("mapping01.jpg");
-  background-size: contain;
-  background-repeat: no-repeat;
+	 
 	max-height: 100%;
 	max-width: 100%;
 	padding: 0;
 	margin: 0;
 }
+
 #overlay {
-/*	width:100%;
-	height: 100vh;
-	background-image: url("mapping01.jpg");
-  background-size: contain;
-  background-repeat: no-repeat;*/
 	position: fixed;
 	top:30px;
 }
