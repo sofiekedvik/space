@@ -7,15 +7,17 @@ var renderer;
 
 init(); //Måste ligga i toppen
 animate(); //Måste ligga i toppen
-skybox();
+createSky();
+
+
 function init(){
 	//Kamera
-	camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 400000);
-	camera.position.z = -10000;
+	camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000000);
+	camera.position.set(0,150,400);
 	//Kontrollerna som flyttar kameran
 	controls = new THREE.TrackballControls(camera);
 	controls.addEventListener("change", render); //För varje förändring som sker så renderas scenen
-	controls.rotateSpeed = 10; //Snabbheten på kameran
+	// controls.rotateSpeed = 10; //Snabbheten på kameran
 	scene = new THREE.Scene();
 	renderer = new THREE.WebGLRenderer();
 	renderer.setSize(window.innerWidth, window.innerHeight);
@@ -28,9 +30,7 @@ function animate(){ //Animerar scenen "detta är en loop"
 	controls.update();
 	renderer.render(scene, camera);
 }
-function skybox(){
 
-}
 function render(){
 	raycaster.setFromCamera( mouse, camera);// update the picking ray with the camera and mouse position
 	var intersects = raycaster.intersectObjects(scene.children);// calculate objects intersecting the picking ray
@@ -66,10 +66,9 @@ function drawWorld(){ // Ritar världen utifrån vad som finns i sunArray kommer
 
 
 function randomGenerator(){
-	var number = Math.floor((Math.random() * 40000) - 20000);
+	var number = Math.floor((Math.random() * 5000) - 2500);
 	return number;
 };
-
 
 
 $("#sun").on("click", function(){ //testat lite jQuery

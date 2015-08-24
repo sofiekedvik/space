@@ -76,8 +76,8 @@ var materialStars = [
 var countedObjects;
 var createObject = { // Liten "motor" som bygger objekt och stoppar dem i en array (sunArray)
 	sphere: {
-		geometry: new THREE.SphereGeometry(50,50,50),
 		name: randomGenerator(), // Om klotet ska få ett unikt namn.
+		geometry: new THREE.SphereGeometry(5,50,50),
 		material: materialStars[0],
 		create: function(id){ // index från loopen som kallar på denna funktion
 			var mesh = new THREE.Mesh(this.geometry, this.material);
@@ -90,7 +90,7 @@ var createObject = { // Liten "motor" som bygger objekt och stoppar dem i en arr
 	},
 
 	sphere2: {
-		geometry: new THREE.SphereGeometry(500,50,50),
+		geometry: new THREE.SphereGeometry(100,50,50),
 		material: materialPlanets[0],
 		name: randomGenerator(), // Om klotet ska få ett unikt namn.
 		create: function(id){ // index från loopen som kallar på denna funktion
