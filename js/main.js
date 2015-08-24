@@ -6,11 +6,13 @@ var renderer;
 
 init(); //Måste ligga i toppen
 animate(); //Måste ligga i toppen
+createSky();
+
 
 function init(){
 	//Kamera
 	camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 400000);
-	camera.position.z = -100000;
+	camera.position.z = 400;
 	//Kontrollerna som flyttar kameran
 	controls = new THREE.TrackballControls(camera);
 	controls.addEventListener("change", render); //För varje förändring som sker så renderas scenen
