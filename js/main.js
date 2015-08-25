@@ -16,13 +16,13 @@ var particleMaterial = new THREE.MeshLambertMaterial({
 });
 
 var posX,
-		posY,
-		posZ,
-		cloneParticle
+	posY,
+	posZ,
+	cloneParticle;
 
 var particleGeometry = new THREE.CircleGeometry(15,20);
 var particleMesh = new THREE.Mesh(particleGeometry, particleMaterial);
-var particleCount = 3000;
+var particleCount = 100;
 for (var i = 0; i < particleCount; i++){
 	posX = randomGenerator();
 	posY = randomGenerator();
@@ -41,7 +41,7 @@ createSky();
 function init(){
 	//Kamera
 	camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000000);
-	camera.position.set(0,150,400);
+	camera.position.set(0,150,3500);
 	//Kontrollerna som flyttar kameran
 	controls = new THREE.TrackballControls(camera);
 	controls.addEventListener("change", render); //För varje förändring som sker så renderas scenen
@@ -69,10 +69,11 @@ function render(){
 			if (intersects[i].object.name == sunArray[j].name)
 				for (var k = 0; k < scene.children.length; k++){ // Tar bort objektet ur scenen
 					if (sunArray[j].name == scene.children[k].name){
-						console.log(scene.children[k]);
 						if (scene.children[k].type != "DirectionalLight"){
-							if (scene.children[k].uuid == "planet"){
+							if (scene.children[k].uuid == "star"){
 							// här ska du lägga vad som händer om man trycker på en planet variabeln informationBox
+								factLoader();
+							
 							}
 							if (scene.children[k].uuid == "sun"){
 							}
@@ -84,6 +85,27 @@ function render(){
 	renderer.render(scene, camera);
 	//	console.log(scene.children);
 };
+
+function factLoader(){
+	var container = document.getElementById("container-facts");
+	container.removeAttribute("hidden");
+	NodeList.prototype.remove = HTMLCollection.prototype.remove = function(){
+		for(var l = this.length - 1; l >= 0; l--){
+			if(this[l] && this[l].parentElement){
+				this[l].parentElement.removeChild(this[l]);
+			}
+		}
+    }
+    var deleted = document.getElementsByClassName('newContent').remove();
+	var content = document.createElement("div");
+	container.appendChild(content);
+	content.className = "newContent";
+	content.innerHTML += "<h3>" + information[0].title + "</h3>";
+	content.innerHTML += "<p>" + information[0].content + "</p>";
+	content.innerHTML += "<p>" + information[0].copyright + "</p>";
+	information.push(information.shift());
+
+}
 
 function drawWorld(){ // Ritar världen utifrån vad som finns i sunArray kommer att ta in fler värden senare
 	for (var i = 0; i < sunArray.length; i++){

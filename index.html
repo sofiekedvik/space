@@ -11,25 +11,45 @@
 
 		<div id="overlay">
 
+			<div class="buttons"><h2 class="logo">Space <span>Bungalow</span></h2></div>
 			<div id="sun" class="buttons"><div id="countedObjects"></div>Add stars</div>
 			<div id="planets" class="buttons">Scramble and release!</div>
 			<div id="light" class="buttons">Add planets</div>
 
-			<div class="buttons"><h2 class="logo">Space <span>Bungalow</span></h2></div>
 			<!-- <div id="sun" class="buttons"><div id="countedObjects"></div><img src="images/star_icon.png"></div>
 			<div id="planets" class="buttons"><img src="images/planet_icon.png"></div>
 			<div id="light" class="buttons"><img src="images/sun_icon.png"></div> -->
 
-
-			<div id="information">
-
+			<div id="container-facts" hidden>
+				<div class="newContent">
+				</div>
 			</div>
+
+			
 			<div class="informationDiv">Space Bungalow is a demo made by Mikael Modig and Sofie kedvik. It’s a 3D world done with WEBGL and THREE.js library.
 			Push the icons to manipulate the Bungalow and create your own galaxy.
 			Pan the camera around with left and right mousebutton and use mouse scroll to zoom in and out. Now let’s navigate through space and see what you can find!</div>
 		</div>
 
+		<script>
+			var xhr = new XMLHttpRequest();
+			var information = [];
+			xhr.onreadystatechange = function() {
 
+		        if(xhr.readyState === 4){
+		            var fact = JSON.parse(xhr.responseText);        
+		            
+		            for(var facts in fact){
+		                information.push(fact[facts]);
+		            }
+		            return information;  
+		        }
+
+			}
+
+			xhr.open("GET", "data/facts.json");
+			xhr.send();
+		</script>
 		<script src="js/three.js"></script>
 		<script src="js/trackballcontrols.js"></script>
 		<script src="js/skybox.js"></script>
