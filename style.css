@@ -9,7 +9,7 @@ body, html {
 }
 
 canvas {
-	 
+
 	max-height: 100%;
 	max-width: 100%;
 	padding: 0;
@@ -37,7 +37,7 @@ canvas {
 	font-size:14px;
 	font-weight:300;
 	letter-spacing: 2px;
-	text-transform: uppercase; 
+	text-transform: uppercase;
 	float: left;
 	margin-left: 20px;
 	cursor: pointer;
@@ -59,7 +59,7 @@ canvas {
 	font-size:11px;
 	font-weight: 300;
 	text-align: center;
-	font-variant: small-caps; 
+	font-variant: small-caps;
 }
 
 #information {

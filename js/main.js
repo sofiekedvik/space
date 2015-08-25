@@ -1,4 +1,5 @@
 var buttonBox = document.getElementById("box");
+var informationBox = document.getElementById("information");
 var camera;
 var controls;
 var scene;
@@ -40,9 +41,12 @@ function render(){
 					if (sunArray[j].name == scene.children[k].name){
 						console.log(scene.children[k]);
 						if (scene.children[k].type != "DirectionalLight"){
-							scene.remove(scene.children[k]);
-							console.log(sunArray[j].name);
-							sunArray.splice(j, 1);
+							if (scene.children[k].uuid == "star"){
+							informationBox.innerHTML = "You hit a star with random information! Yaaaaaayyyy!";}
+							if (scene.children[k].uuid == "planet"){
+							informationBox.innerHTML = "You hit a planet, it´s not earth, keep on searching starChild";
+							}
+
 						}
 					}
 				}
@@ -55,6 +59,7 @@ function render(){
 function drawWorld(){ // Ritar världen utifrån vad som finns i sunArray kommer att ta in fler värden senare
 	for (var i = 0; i < sunArray.length; i++){
 		sunArray[i].position.set(randomGenerator(),randomGenerator(),randomGenerator());
+
 		scene.add(sunArray[i]);
 	}
 }
@@ -65,16 +70,16 @@ function randomGenerator(){
 	return number;
 };
 
-var light = new THREE.PointLight("white", 1, 6000); // Denna ska nog inte vara kvar.
-light.position.set(50,50,50).normalize();
-scene.add(light);
 
 $("#sun").on("click", function(){ //testat lite jQuery
 	for (var i = 0; i < 1000; i++){
 		createObject.sphere.create(randomGenerator() * randomGenerator ()); // Sätter unika id för de nya objekten
 	}
 	countedObjects = sunArray.length;
+
+
 	document.getElementById("countedObjects").innerHTML = countedObjects;
+	drawWorld();
 });
 
 document.addEventListener("click", function(e){
@@ -84,9 +89,10 @@ document.addEventListener("click", function(e){
 	}
 	if (e.srcElement.id == "light"){
 		for (var i = 0; i < 10; i++){
+
 			createObject.sphere2.create(randomGenerator() * randomGenerator ()); // Sätter unika id för de nya objekten
 		}
-
+		drawWorld();
 	}
 	render();
 });
