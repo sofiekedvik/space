@@ -1,14 +1,42 @@
 var buttonBox = document.getElementById("box");
-var informationBox = document.getElementById("information");
+var informationBox = document.getElementById("container-facts");
 var camera;
 var controls;
 var scene;
 var renderer;
+init();
 
-init(); //Måste ligga i toppen
+var particleMaterial = new THREE.MeshLambertMaterial({
+	emissive: "#12d1ea",
+	doubleSided: true,
+	transparent: true,
+	emissive: "#4d61d1",
+	map: THREE.ImageUtils.loadTexture("images/spriteparticle.png")
+
+});
+
+var posX,
+		posY,
+		posZ,
+		cloneParticle
+
+var particleGeometry = new THREE.CircleGeometry(15,20);
+var particleMesh = new THREE.Mesh(particleGeometry, particleMaterial);
+var particleCount = 3000;
+for (var i = 0; i < particleCount; i++){
+	posX = randomGenerator();
+	posY = randomGenerator();
+	posZ = randomGenerator();
+	cloneParticle = particleMesh.clone();
+	cloneParticle.position.set(posX, posY, posZ);
+	cloneParticle.rotation.set(posX, posY, posZ);
+	scene.add(cloneParticle);
+};
+
+
+ //Måste ligga i toppen
 animate(); //Måste ligga i toppen
 createSky();
-
 
 function init(){
 	//Kamera
@@ -25,10 +53,12 @@ function init(){
 
 };
 
+
 function animate(){ //Animerar scenen "detta är en loop"
-	requestAnimationFrame(animate);
+
 	controls.update();
 	renderer.render(scene, camera);
+	requestAnimationFrame(animate);
 }
 
 function render(){
@@ -41,12 +71,11 @@ function render(){
 					if (sunArray[j].name == scene.children[k].name){
 						console.log(scene.children[k]);
 						if (scene.children[k].type != "DirectionalLight"){
-							if (scene.children[k].uuid == "star"){
-							informationBox.innerHTML = "You hit a star with random information! Yaaaaaayyyy!";}
 							if (scene.children[k].uuid == "planet"){
-							informationBox.innerHTML = "You hit a planet, it´s not earth, keep on searching starChild";
+							// här ska du lägga vad som händer om man trycker på en planet variabeln informationBox
 							}
-
+							if (scene.children[k].uuid == "sun"){
+							}
 						}
 					}
 				}
@@ -66,21 +95,9 @@ function drawWorld(){ // Ritar världen utifrån vad som finns i sunArray kommer
 
 
 function randomGenerator(){
-	var number = Math.floor((Math.random() * 5000) - 2500);
-	return number;
+	return Math.floor((Math.random() * 10000) - 5000);
 };
 
-
-$("#sun").on("click", function(){ //testat lite jQuery
-	for (var i = 0; i < 1000; i++){
-		createObject.sphere.create(randomGenerator() * randomGenerator ()); // Sätter unika id för de nya objekten
-	}
-	countedObjects = sunArray.length;
-
-
-	document.getElementById("countedObjects").innerHTML = countedObjects;
-	drawWorld();
-});
 
 document.addEventListener("click", function(e){
 	var stringCount = 0;
@@ -89,7 +106,6 @@ document.addEventListener("click", function(e){
 	}
 	if (e.srcElement.id == "light"){
 		for (var i = 0; i < 10; i++){
-
 			createObject.sphere2.create(randomGenerator() * randomGenerator ()); // Sätter unika id för de nya objekten
 		}
 		drawWorld();
