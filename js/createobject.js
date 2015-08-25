@@ -1,5 +1,4 @@
 var sunArray = [];
-var sunParameters = [2,15,15];
 var planetImages = [
 	"images/planet1.jpg",
 	"images/planet2.jpg",
@@ -110,3 +109,10 @@ function randomImageGenerator(){
 		var number = Math.floor((Math.random() * 29));
 		return number;
 };
+
+
+// THE SUN
+var sunGeometry = new THREE.SphereGeometry(1000,25,25);
+var sunMaterial = new THREE.MeshPhongMaterial( {map: THREE.ImageUtils.loadTexture("images/sun.jpg")} );
+var sunMesh = new THREE.Mesh(sunGeometry, sunMaterial);
+scene.add( sunMesh );
