@@ -4,6 +4,7 @@ var camera;
 var controls;
 var scene;
 var renderer;
+var sunArray = [];
 init();
 
 var particleMaterial = new THREE.MeshLambertMaterial({
@@ -16,17 +17,15 @@ var particleMaterial = new THREE.MeshLambertMaterial({
 });
 
 var posX,
-	posY,
-	posZ,
-	cloneParticle;
+		posY,
+		posZ,
+		cloneParticle;
 
 var particleGeometry = new THREE.CircleGeometry(50,20);
 var particleMesh = new THREE.Mesh(particleGeometry, particleMaterial);
-<<<<<<< HEAD
-var particleCount = 1000;
-=======
+
 var particleCount = 100;
->>>>>>> origin/master
+
 for (var i = 0; i < particleCount; i++){
 	posX = randomGenerator();
 	posY = randomGenerator();
@@ -38,7 +37,7 @@ for (var i = 0; i < particleCount; i++){
 };
 
 
- //Måste ligga i toppen
+//Måste ligga i toppen
 animate(); //Måste ligga i toppen
 createSky();
 
@@ -47,6 +46,7 @@ function init(){
 	camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000000);
 	camera.position.set(0,150,3500);
 	//Kontrollerna som flyttar kameran
+
 	controls = new THREE.TrackballControls(camera);
 	controls.addEventListener("change", render); //För varje förändring som sker så renderas scenen
 	// controls.rotateSpeed = 10; //Snabbheten på kameran
@@ -57,26 +57,48 @@ function init(){
 
 };
 
-
+var rotations;
 function animate(){ //Animerar scenen "detta är en loop"
 
 	controls.update();
 	renderer.render(scene, camera);
-	requestAnimationFrame(animate);
+	requestAnimationFrame(function(){
+
+		animate();
+	});
+
+}
+function detectLeftButton(evt) {
+	evt = evt || window.event;
+	var button = evt.which || evt.button;
+	return button == 1;
 }
 
 function render(){
-	raycaster.setFromCamera( mouse, camera);// update the picking ray with the camera and mouse position
-	var intersects = raycaster.intersectObjects(scene.children);// calculate objects intersecting the picking ray
+	if (sunArray.length > 3) {
+	sunArray[1].rotation.y += 10;
+	sunArray[2].rotation.y += 10;
+	sunArray[3].rotation.y += 10;
+	sunArray[4].rotation.y += 10;
+	sunArray[5].rotation.y += 10;
+	sunArray[6].rotation.y += 10;
+	sunArray[7].rotation.y += 10;
+	sunArray[8].rotation.y += 10;
+	sunArray[9].rotation.y += 10;
+		console.log(sunArray[1].position.x)
+}
+
+
+
+
 	for ( var i = 0; i < intersects.length; i++ ){ // Kollar om strålen träffar något
 		for (var j = 0; j < sunArray.length; j++){ // Kollar i sunArrayn om strålen matchar
 			if (intersects[i].object.name == sunArray[j].name)
 				for (var k = 0; k < scene.children.length; k++){ // Tar bort objektet ur scenen
 					if (sunArray[j].name == scene.children[k].name){
 						if (scene.children[k].type != "DirectionalLight"){
-							if (scene.children[k].uuid == "star"){
-							// här ska du lägga vad som händer om man trycker på en planet variabeln informationBox
-								factLoader();
+							if (scene.children[k].uuid == "planet" && detectLeftButton() == 1){
+factLoader()
 
 							}
 							if (scene.children[k].uuid == "sun"){
@@ -90,6 +112,8 @@ function render(){
 	//	console.log(scene.children);
 };
 
+
+
 function factLoader(){
 	var container = document.getElementById("container-facts");
 	container.removeAttribute("hidden");
@@ -99,8 +123,8 @@ function factLoader(){
 				this[l].parentElement.removeChild(this[l]);
 			}
 		}
-    }
-    var deleted = document.getElementsByClassName('newContent').remove();
+	}
+	var deleted = document.getElementsByClassName('newContent').remove();
 	var content = document.createElement("div");
 	container.appendChild(content);
 	content.className = "newContent";
