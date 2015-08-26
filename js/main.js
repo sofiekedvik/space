@@ -20,9 +20,9 @@ var posX,
 		posZ,
 		cloneParticle
 
-var particleGeometry = new THREE.CircleGeometry(15,20);
+var particleGeometry = new THREE.CircleGeometry(50,20);
 var particleMesh = new THREE.Mesh(particleGeometry, particleMaterial);
-var particleCount = 3000;
+var particleCount = 1000;
 for (var i = 0; i < particleCount; i++){
 	posX = randomGenerator();
 	posY = randomGenerator();
@@ -41,7 +41,7 @@ createSky();
 function init(){
 	//Kamera
 	camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000000);
-	camera.position.set(0,150,400);
+	camera.position.set(0,150,3500);
 	//Kontrollerna som flyttar kameran
 	controls = new THREE.TrackballControls(camera);
 	controls.addEventListener("change", render); //För varje förändring som sker så renderas scenen

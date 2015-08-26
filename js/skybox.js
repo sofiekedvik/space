@@ -15,7 +15,7 @@
 // }
 
 function createSky(){
-	var skyGeo = new THREE.SphereGeometry(100000, 50, 50);
+	var skyGeo = new THREE.SphereGeometry(100000, 5, 5);
 	var texture = THREE.ImageUtils.loadTexture( "images/space.jpg" );
 	texture.wrapS = THREE.RepeatWrapping;
 	texture.wrapT = THREE.RepeatWrapping;

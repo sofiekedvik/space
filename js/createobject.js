@@ -30,7 +30,7 @@ var planetImages = [
 	"images/planet28.jpg",
 	"images/planet29.jpg",
 	"images/planet30.jpg",
-									 ];
+];
 var starImages = [
 	"images/star.jpg"
 ];
@@ -106,8 +106,8 @@ var createObject = { // Liten "motor" som bygger objekt och stoppar dem i en arr
 	},
 };
 function randomImageGenerator(){
-		var number = Math.floor((Math.random() * 29));
-		return number;
+	var number = Math.floor((Math.random() * 29));
+	return number;
 };
 
 
