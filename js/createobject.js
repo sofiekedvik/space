@@ -115,4 +115,5 @@ function randomImageGenerator(){
 var sunGeometry = new THREE.SphereGeometry(1000,25,25);
 var sunMaterial = new THREE.MeshPhongMaterial( {map: THREE.ImageUtils.loadTexture("images/sun.jpg")} );
 var sunMesh = new THREE.Mesh(sunGeometry, sunMaterial);
+sunMesh.position.set(0,0,0);
 scene.add( sunMesh );
