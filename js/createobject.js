@@ -35,38 +35,11 @@ var starImages = [
 	"images/star.jpg"
 ];
 
-var materialPlanets = [
-	material1 = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture(planetImages[0])}),
-	material2 = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture(planetImages[1])}),
-	material3 = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture(planetImages[2])}),
-	material4 = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture(planetImages[3])}),
-	material5 = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture(planetImages[4])}),
-	material6 = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture(planetImages[5])}),
-	material7 = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture(planetImages[6])}),
-	material8 = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture(planetImages[7])}),
-	material9 = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture(planetImages[8])}),
-	material10 = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture(planetImages[9])}),
-	material11 = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture(planetImages[10])}),
-	material12 = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture(planetImages[11])}),
-	material13 = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture(planetImages[12])}),
-	material14 = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture(planetImages[13])}),
-	material15 = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture(planetImages[14])}),
-	material16 = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture(planetImages[15])}),
-	material17 = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture(planetImages[16])}),
-	material18 = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture(planetImages[17])}),
-	material19 = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture(planetImages[18])}),
-	material20 = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture(planetImages[19])}),
-	material21 = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture(planetImages[20])}),
-	material22 = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture(planetImages[21])}),
-	material23 = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture(planetImages[22])}),
-	material24 = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture(planetImages[23])}),
-	material25 = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture(planetImages[24])}),
-	material26 = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture(planetImages[25])}),
-	material27 = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture(planetImages[26])}),
-	material28 = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture(planetImages[27])}),
-	material29 = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture(planetImages[28])}),
-	material30 = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture(planetImages[29])}),
-];
+var materialPlanets = {};
+
+for (var i = 0; i < 30; i++){
+	materialPlanets["material" + i] = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture(planetImages[i])});
+}
 
 var materialStars = [
 	materialStar1 = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture(starImages[0])})
@@ -90,11 +63,12 @@ var createObject = { // Liten "motor" som bygger objekt och stoppar dem i en arr
 
 	sphere2: {
 		geometry: new THREE.SphereGeometry(200,50,50),
-		material: materialPlanets[0],
+//		material: materialPlanets[0],
+		material: materialPlanets.material0,
 		name: randomGenerator(), // Om klotet ska få ett unikt namn.
 		create: function(id){ // index från loopen som kallar på denna funktion
 			var randomValue = randomImageGenerator();
-			this.material = materialPlanets[randomValue];
+			this.material = materialPlanets["material" + randomValue];
 			var mesh = new THREE.Mesh(this.geometry, this.material);
 			mesh.uuid = "planet";
 			mesh.name = this.name * randomGenerator() + id; //sätter unikt id på alla klot
@@ -106,8 +80,7 @@ var createObject = { // Liten "motor" som bygger objekt och stoppar dem i en arr
 	},
 };
 function randomImageGenerator(){
-	var number = Math.floor((Math.random() * 29));
-	return number;
+	return Math.floor((Math.random() * 29));
 };
 
 

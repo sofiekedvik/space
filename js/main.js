@@ -16,9 +16,6 @@ var particleMaterial = new THREE.MeshLambertMaterial({
 
 });
 
-
-
-
 var posX,
 		posY,
 		posZ,
@@ -27,7 +24,7 @@ var posX,
 var particleGeometry = new THREE.CircleGeometry(50,20);
 var particleMesh = new THREE.Mesh(particleGeometry, particleMaterial);
 
-var particleCount = 5000;
+var particleCount = 10000;
 
 for (var i = 0; i < particleCount; i++){
 	posX = randomGenerator() * 2;
@@ -126,7 +123,7 @@ function animate(){ //Animerar scenen "detta är en loop"
 			sunArray[9].position.y = Math.cos( timer / 5) * arrayY[9] * 4;
 			sunArray[9].position.z = Math.sin( timer / 5) * arrayZ[9] * 4;
 			sunArray[9].rotation.y += 0.01;
-//
+			//
 		}
 		sunMesh.rotation.x += 0.001;
 		animate();
@@ -135,34 +132,25 @@ function animate(){ //Animerar scenen "detta är en loop"
 }
 
 
-//function detectLeftButton(evt) {
-//	evt = evt || window.event;
-//	var button = evt.which || evt.button;
-//	return button == 1;
-//}
+function detectLeftButton(){
+	evt = window.event;
+	var button = 0;
+	if (evt) button = evt.which || evt.button;
+	return (button == 1 ? true : false);
+}
 
 function render(){
-
-
 	raycaster.setFromCamera( mouse, camera);// update the picking ray with the camera and mouse position
 	var intersects = raycaster.intersectObjects(scene.children);// calculate objects intersecting the picking ray
-
-
-
-
 	for ( var i = 0; i < intersects.length; i++ ){ // Kollar om strålen träffar något
 		for (var j = 0; j < sunArray.length; j++){ // Kollar i sunArrayn om strålen matchar
 			if (intersects[i].object.name == sunArray[j].name)
 				for (var k = 0; k < scene.children.length; k++){ // Tar bort objektet ur scenen
 					if (sunArray[j].name == scene.children[k].name){
-						if (scene.children[k].type != "DirectionalLight"){
-//							if (scene.children[k].uuid == "planet" && detectLeftButton() == 1){
-//								factLoader()
-//
-//							}
-							if (scene.children[k].uuid == "sun"){
-							}
+						if (scene.children[k].uuid == "planet" && detectLeftButton() == true){
+							factLoader();
 						}
+
 					}
 				}
 		}
@@ -197,9 +185,9 @@ function factLoader(){
 function drawWorld(){ // Ritar världen utifrån vad som finns i sunArray kommer att ta in fler värden senare
 	for (var i = 0; i < sunArray.length; i++){
 		sunArray[i].position.set(randomGenerator() ,randomGenerator(),randomGenerator());
-    var x = sunArray[i].position.x;
-    var y = sunArray[i].position.y;
-    var z = sunArray[i].position.z;
+		var x = sunArray[i].position.x;
+		var y = sunArray[i].position.y;
+		var z = sunArray[i].position.z;
 		arrayX.push(x);
 		arrayY.push(y);
 		arrayZ.push(z);
