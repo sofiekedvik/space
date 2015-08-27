@@ -25,7 +25,7 @@
 				</div>
 			</div>
 
-			
+
 			<div class="informationDiv">Space Bungalow is a demo made by Mikael Modig and Sofie kedvik. It’s a 3D world done with WEBGL and THREE.js library.
 			Push the icons to manipulate the Bungalow and create your own galaxy.
 			Pan the camera around with left and right mousebutton and use mouse scroll to zoom in and out. Now let’s navigate through space and see what you can find!</div>
@@ -37,12 +37,12 @@
 			xhr.onreadystatechange = function() {
 
 		        if(xhr.readyState === 4){
-		            var fact = JSON.parse(xhr.responseText);        
-		            
+		            var fact = JSON.parse(xhr.responseText);
+
 		            for(var facts in fact){
 		                information.push(fact[facts]);
 		            }
-		            return information;  
+		            return information;
 		        }
 
 			}

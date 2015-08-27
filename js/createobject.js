@@ -1,4 +1,4 @@
-var sunArray = [];
+
 var planetImages = [
 	"images/planet1.jpg",
 	"images/planet2.jpg",
@@ -30,7 +30,7 @@ var planetImages = [
 	"images/planet28.jpg",
 	"images/planet29.jpg",
 	"images/planet30.jpg",
-									 ];
+];
 var starImages = [
 	"images/star.jpg"
 ];
@@ -96,7 +96,7 @@ var createObject = { // Liten "motor" som bygger objekt och stoppar dem i en arr
 			var randomValue = randomImageGenerator();
 			this.material = materialPlanets[randomValue];
 			var mesh = new THREE.Mesh(this.geometry, this.material);
-			mesh.uuid = "star";
+			mesh.uuid = "planet";
 			mesh.name = this.name * randomGenerator() + id; //sätter unikt id på alla klot
 			mesh.material.needsUpdate = true;
 			renderer.render(scene, camera);
@@ -106,8 +106,8 @@ var createObject = { // Liten "motor" som bygger objekt och stoppar dem i en arr
 	},
 };
 function randomImageGenerator(){
-		var number = Math.floor((Math.random() * 29));
-		return number;
+	var number = Math.floor((Math.random() * 29));
+	return number;
 };
 
 
