@@ -89,7 +89,7 @@ var createObject = { // Liten "motor" som bygger objekt och stoppar dem i en arr
 	},
 
 	sphere2: {
-		geometry: new THREE.SphereGeometry(100,50,50),
+		geometry: new THREE.SphereGeometry(200,50,50),
 		material: materialPlanets[0],
 		name: randomGenerator(), // Om klotet ska få ett unikt namn.
 		create: function(id){ // index från loopen som kallar på denna funktion
@@ -112,8 +112,17 @@ function randomImageGenerator(){
 
 
 // THE SUN
-var sunGeometry = new THREE.SphereGeometry(1000,25,25);
-var sunMaterial = new THREE.MeshPhongMaterial( {map: THREE.ImageUtils.loadTexture("images/sun.jpg")} );
+var sunGeometry = new THREE.SphereGeometry(1000,50,50);
+var sunMaterial = new THREE.MeshLambertMaterial( {
+	map: THREE.ImageUtils.loadTexture("images/sun.jpg"),
+	side: THREE.BackSide,
+	depthWrite: false
+//	emissive: "white"
+
+} );
 var sunMesh = new THREE.Mesh(sunGeometry, sunMaterial);
 sunMesh.position.set(0,0,0);
+
+
+
 scene.add( sunMesh );

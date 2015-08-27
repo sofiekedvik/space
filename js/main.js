@@ -9,13 +9,15 @@ var sunArray = [];
 init();
 
 var particleMaterial = new THREE.MeshLambertMaterial({
-	emissive: "#12d1ea",
+	emissive: "#ffffff",
 	doubleSided: true,
 	transparent: true,
-	emissive: "#4d61d1",
 	map: THREE.ImageUtils.loadTexture("images/spriteparticle.png")
 
 });
+
+
+
 
 var posX,
 		posY,
@@ -25,7 +27,7 @@ var posX,
 var particleGeometry = new THREE.CircleGeometry(50,20);
 var particleMesh = new THREE.Mesh(particleGeometry, particleMaterial);
 
-var particleCount = 2000;
+var particleCount = 5000;
 
 for (var i = 0; i < particleCount; i++){
 	posX = randomGenerator() * 2;
@@ -34,6 +36,8 @@ for (var i = 0; i < particleCount; i++){
 	cloneParticle = particleMesh.clone();
 	cloneParticle.position.set(posX, posY, posZ);
 	cloneParticle.rotation.set(posX, posY, posZ);
+	cloneParticle.position.normalize();
+	cloneParticle.position.multiplyScalar( 30000 );
 	scene.add(cloneParticle);
 };
 
@@ -73,45 +77,55 @@ function animate(){ //Animerar scenen "detta är en loop"
 	renderer.render(scene, camera);
 	requestAnimationFrame(function(){
 		if (sunArray.length > 3) {
-			sunArray[0].position.x = Math.cos( timer / 2) * arrayX[0] * 2;
-			sunArray[0].position.y = Math.cos( timer / 2) * arrayY[0] * 2;
-			sunArray[0].position.z = Math.sin( timer / 2) * arrayZ[0] * 2;
+			sunArray[0].position.x = Math.cos( timer / 2) * arrayX[0] * 3;
+			sunArray[0].position.y = Math.cos( timer / 2) * arrayY[0] * 3;
+			sunArray[0].position.z = Math.sin( timer / 2) * arrayZ[0] * 3;
+			sunArray[0].rotation.y += 0.01;
 
-			sunArray[1].position.x = Math.cos( timer ) * arrayX[1] * 2;
-			sunArray[1].position.y = Math.cos( timer ) * arrayY[1] * 2;
-			sunArray[1].position.z = Math.sin( timer ) * arrayZ[1] * 2;
+			sunArray[1].position.x = Math.cos( timer / 4) * arrayX[1] * 3;
+			sunArray[1].position.y = Math.cos( timer / 4) * arrayY[1] * 3;
+			sunArray[1].position.z = Math.sin( timer / 4) * arrayZ[1] * 3;
+			sunArray[1].rotation.y += 0.01;
 
 			sunArray[2].position.x = Math.cos( timer / 2) * arrayX[2] * 2;
 			sunArray[2].position.y = Math.cos( timer / 2) * arrayY[2] * 2;
 			sunArray[2].position.z = Math.sin( timer / 2) * arrayZ[2] * 2;
+			sunArray[2].rotation.y += 0.01;
 
-			sunArray[3].position.x = Math.cos( timer ) * arrayX[3] * 2;
-			sunArray[3].position.y = Math.cos( timer ) * arrayY[3] * 2;
-			sunArray[3].position.z = Math.sin( timer ) * arrayZ[3] * 2;
+			sunArray[3].position.x = Math.cos( timer / 2) * arrayX[3] * 2;
+			sunArray[3].position.y = Math.cos( timer / 2) * arrayY[3] * 2;
+			sunArray[3].position.z = Math.sin( timer / 2) * arrayZ[3] * 2;
+			sunArray[3].rotation.y += 0.01;
 
-			sunArray[4].position.x = Math.cos( timer ) * arrayX[4] * 2;
-			sunArray[4].position.y = Math.cos( timer ) * arrayY[4] * 2;
-			sunArray[4].position.z = Math.sin( timer ) * arrayZ[4] * 2;
+			sunArray[4].position.x = Math.cos( timer / 3) * arrayX[4] * 4;
+			sunArray[4].position.y = Math.cos( timer / 3) * arrayY[4] * 4;
+			sunArray[4].position.z = Math.sin( timer / 3) * arrayZ[4] * 4;
+			sunArray[4].rotation.y += 0.01;
 
-			sunArray[5].position.x = Math.cos( timer / 2) * arrayX[5] * 2;
-			sunArray[5].position.y = Math.cos( timer / 2) * arrayY[5] * 2;
-			sunArray[5].position.z = Math.sin( timer / 2) * arrayZ[5] * 2;
+			sunArray[5].position.x = Math.cos( timer / 2) * arrayX[5] * 4;
+			sunArray[5].position.y = Math.cos( timer / 2) * arrayY[5] * 4;
+			sunArray[5].position.z = Math.sin( timer / 2) * arrayZ[5] * 4;
+			sunArray[5].rotation.y += 0.01;
 
-			sunArray[6].position.x = Math.cos( timer ) * arrayX[6] * 2;
-			sunArray[6].position.y = Math.cos( timer ) * arrayY[6] * 2;
-			sunArray[6].position.z = Math.sin( timer ) * arrayZ[6] * 2;
+			sunArray[6].position.x = Math.cos( timer / 2) * arrayX[6] * 2;
+			sunArray[6].position.y = Math.cos( timer / 2) * arrayY[6] * 2;
+			sunArray[6].position.z = Math.sin( timer / 2) * arrayZ[6] * 2;
+			sunArray[6].rotation.y += 0.01;
 
-			sunArray[7].position.x = Math.cos( timer ) * arrayX[7] * 2;
-			sunArray[7].position.y = Math.cos( timer ) * arrayY[7] * 2;
-			sunArray[7].position.z = Math.sin( timer ) * arrayZ[7] * 2;
+			sunArray[7].position.x = Math.cos( timer / 4) * arrayX[7] * 5;
+			sunArray[7].position.y = Math.cos( timer / 4) * arrayY[7] * 5;
+			sunArray[7].position.z = Math.sin( timer / 4) * arrayZ[7] * 5;
+			sunArray[7].rotation.y += 0.01;
 
-			sunArray[8].position.x = Math.cos( timer ) * arrayX[8] * 2;
-			sunArray[8].position.y = Math.cos( timer ) * arrayY[8] * 2;
-			sunArray[8].position.z = Math.sin( timer ) * arrayZ[8] * 2;
+			sunArray[8].position.x = Math.cos( timer / 3) * arrayX[8] * 2;
+			sunArray[8].position.y = Math.cos( timer / 3) * arrayY[8] * 2;
+			sunArray[8].position.z = Math.sin( timer / 3) * arrayZ[8] * 2;
+			sunArray[8].rotation.y += 0.01;
 
-			sunArray[9].position.x = Math.cos( timer ) * arrayX[9] * 2;
-			sunArray[9].position.y = Math.cos( timer ) * arrayY[9] * 2;
-			sunArray[9].position.z = Math.sin( timer ) * arrayZ[9] * 2;
+			sunArray[9].position.x = Math.cos( timer / 5) * arrayX[9] * 4;
+			sunArray[9].position.y = Math.cos( timer / 5) * arrayY[9] * 4;
+			sunArray[9].position.z = Math.sin( timer / 5) * arrayZ[9] * 4;
+			sunArray[9].rotation.y += 0.01;
 //
 		}
 		sunMesh.rotation.x += 0.001;

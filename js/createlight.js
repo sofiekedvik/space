@@ -1,8 +1,4 @@
-var light = new THREE.DirectionalLight("white", 1);
-light.position.set(0,-450,400).normalize();
-scene.add(light);
+var pointLight = new THREE.PointLight( "white", 1, 0 );
+pointLight.position.set( 0, 0, 0 );
+scene.add( pointLight );
 
-
-var light2 = new THREE.DirectionalLight("white", 1);+
-light2.position.set(500,550,-400).normalize();
-scene.add(light2);
