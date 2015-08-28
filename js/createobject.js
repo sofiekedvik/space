@@ -99,3 +99,37 @@ sunMesh.position.set(0,0,0);
 
 
 scene.add( sunMesh );
+
+// THE SUN GLOW
+var sunGeometry2 = new THREE.SphereGeometry(1080,10,10);
+var sunMaterial2 = new THREE.MeshLambertMaterial( {
+	transparent: true,
+	opacity: 0.3,
+	emissive: "#ff6c00",
+	depthWrite: false
+//	emissive: "white"
+
+} );
+var sunMesh2 = new THREE.Mesh(sunGeometry2, sunMaterial2);
+sunMesh2.position.set(0,0,0);
+
+
+
+scene.add( sunMesh2 );
+
+// THE SUN GLOW
+var sunGeometry3 = new THREE.SphereGeometry(1080,10,10);
+var sunMaterial3 = new THREE.MeshLambertMaterial( {
+	transparent: true,
+	opacity: 0.3,
+	emissive: "#ff6c00",
+	depthWrite: false
+//	emissive: "white"
+
+} );
+var sunMesh3 = new THREE.Mesh(sunGeometry3, sunMaterial3);
+sunMesh2.position.set(0,0,0);
+
+
+
+scene.add( sunMesh3 );

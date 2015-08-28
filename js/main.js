@@ -24,7 +24,7 @@ var posX,
 var particleGeometry = new THREE.CircleGeometry(50,20);
 var particleMesh = new THREE.Mesh(particleGeometry, particleMaterial);
 
-var particleCount = 10000;
+var particleCount = 3000;
 
 for (var i = 0; i < particleCount; i++){
 	posX = randomGenerator() * 2;
@@ -46,7 +46,7 @@ createSky();
 function init(){
 	//Kamera
 	camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000000);
-	camera.position.set(0,150,3500);
+	camera.position.set(0,150,15500);
 	//Kontrollerna som flyttar kameran
 	clock = new THREE.Clock;
 	controls = new THREE.TrackballControls(camera);
@@ -126,6 +126,8 @@ function animate(){ //Animerar scenen "detta är en loop"
 			//
 		}
 		sunMesh.rotation.x += 0.001;
+		sunMesh2.rotation.y += 0.001;
+		sunMesh3.rotation.x += 0.001;
 		animate();
 	});
 
