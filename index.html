@@ -18,15 +18,20 @@
 			<div id="planets" class="buttons"><img src="images/planet_icon.png"></div>
 			<div id="light" class="buttons"><img src="images/sun_icon.png"></div> -->
 
-			<div id="container-facts" hidden>
+			<div id="container-facts" class="hidden">
 				<div class="newContent">
 				</div>
 			</div>
 
 
-			<div class="informationDiv">Space Bungalow is a demo made by Mikael Modig and Sofie kedvik. It’s a 3D world done with WEBGL and THREE.js library.
-			Push the icons to manipulate the Bungalow and create your own galaxy.
-			Pan the camera around with left and right mousebutton and use mouse scroll to zoom in and out. Now let’s navigate through space and see what you can find!</div>
+			<div class="intro">
+				<p class="frame">Welcome to Space Bungalow</p>
+				<p class="frame">This is a demo made by Mikael Modig and Sofie Kedvik</p>
+				<p class="frame">It's a 3D world done with WEBGL and THREE.js Library.</p>
+				<p class="frame">Push the icon to manipulate the Bungalow and create your own galaxy!</p>
+				<p class="frame">Pan the camera around with left and right mousebutton and use mouse scroll to zoom in and out.</p>
+				<p class="frame">Now let’s navigate through space and see what you can find!</p>
+			 </div>
 		</div>
 
 		<script>
@@ -52,9 +57,37 @@
 		<script src="js/trackballcontrols.js"></script>
 		<script src="js/skybox.js"></script>
 		<script src="js/main.js"></script>
-    <script src="js/createlight.js"></script>
+    	<script src="js/createlight.js"></script>
 		<script src="js/createobject.js"></script>
 		<script src="js/interaction.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/TweenLite.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/TimelineLite.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/easing/EasePack.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/plugins/CSSPlugin.min.js"></script>
+		<script>
+			
+
+			var frameElements = document.getElementsByClassName("frame");
+			var tl = new TimelineLite();
+			tl.fromTo(frameElements[0], 0.5, {opacity: 0, fontSize: 0},{opacity:1, fontSize: 40, ease: Quad.easeOut}, "+=2"),
+			tl.to(frameElements[0], 0.5, {opacity: 0, ease: Quad.easeIn}, "+=2"),
+			tl.fromTo(frameElements[1], 0.5, {y: 0, opacity: 0, fontSize: 0},{y:-50, opacity:1, fontSize: 40, ease: Quad.easeOut}, "+=.5"),
+			tl.to(frameElements[1], 0.5, {opacity: 0, ease: Quad.easeIn}, "+=2"),
+			tl.fromTo(frameElements[2], 0.5, {y: 0,opacity: 0, fontSize: 0},{y:-100, opacity:1, fontSize: 40, ease: Quad.easeOut}, "+=.5"),
+			tl.to(frameElements[2], 0.5, {opacity: 0, ease: Quad.easeIn}, "+=2"),
+			tl.fromTo(frameElements[3], 0.5, {y: 0, opacity: 0, fontSize: 0},{y:-230, opacity:1, fontSize: 40, ease: Quad.easeOut}, "+=.5"),
+			tl.to(frameElements[3], 0.5, {opacity: 0, ease: Quad.easeIn}, "+=2"),
+			tl.fromTo(frameElements[4], 0.5, {y: 0, opacity: 0, fontSize: 0},{y:-300, opacity:1, fontSize: 40, ease: Quad.easeOut}, "+=.5"),
+			tl.to(frameElements[4], 0.5, {opacity: 0, ease: Quad.easeIn}, "+=2"),
+			tl.fromTo(frameElements[5], 0.5, {y: 0, opacity: 0, fontSize: 0},{y:-400, opacity:1, fontSize: 40, ease: Quad.easeOut}, "+=.5"),
+			tl.to(frameElements[5], 0.5, {opacity: 0, ease: Quad.easeIn}, "+=2");
+
+		
+
+
+
+
+		</script>
 
 
 

@@ -89,8 +89,8 @@ var sunGeometry = new THREE.SphereGeometry(1000,50,50);
 var sunMaterial = new THREE.MeshLambertMaterial( {
 	map: THREE.ImageUtils.loadTexture("images/sun.jpg"),
 	side: THREE.BackSide,
-	depthWrite: false
-//	emissive: "white"
+	depthWrite: false,
+	emissive: "rgba(254,245,109,.6"
 
 } );
 var sunMesh = new THREE.Mesh(sunGeometry, sunMaterial);
@@ -101,7 +101,7 @@ sunMesh.position.set(0,0,0);
 scene.add( sunMesh );
 
 // THE SUN GLOW
-var sunGeometry2 = new THREE.SphereGeometry(1080,10,10);
+var sunGeometry2 = new THREE.SphereGeometry(1090,20,20);
 var sunMaterial2 = new THREE.MeshLambertMaterial( {
 	transparent: true,
 	opacity: 0.3,
@@ -118,7 +118,7 @@ sunMesh2.position.set(0,0,0);
 scene.add( sunMesh2 );
 
 // THE SUN GLOW
-var sunGeometry3 = new THREE.SphereGeometry(1080,10,10);
+var sunGeometry3 = new THREE.SphereGeometry(1090,20,20);
 var sunMaterial3 = new THREE.MeshLambertMaterial( {
 	transparent: true,
 	opacity: 0.3,
