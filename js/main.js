@@ -17,14 +17,14 @@ var particleMaterial = new THREE.MeshLambertMaterial({
 });
 
 var posX,
-		posY,
-		posZ,
-		cloneParticle;
+	posY,
+	posZ,
+	cloneParticle;
 
 var particleGeometry = new THREE.CircleGeometry(50,20);
 var particleMesh = new THREE.Mesh(particleGeometry, particleMaterial);
 
-var particleCount = 3000;
+var particleCount = 300;
 
 for (var i = 0; i < particleCount; i++){
 	posX = randomGenerator() * 2;
