@@ -69,6 +69,11 @@ function init(){
 var arrayX = [];
 var arrayY = [];
 var arrayZ = [];
+var rotate = {
+	x: 0.01,
+	y: 0.01
+};
+
 
 
 function animate(){ //Animerar scenen "detta är en loop"
@@ -80,12 +85,13 @@ function animate(){ //Animerar scenen "detta är en loop"
 	requestAnimationFrame(function(){
 		if (sunArray.length > 6) {
 			while (waitTimer <= 3){
-			waitTimer += 0.01;
+				waitTimer += 0.01;
 			};
 
 			sunArray[0].position.x = Math.cos(timer  / 2) * 1600 * 2;
 			sunArray[0].position.y = Math.sin(timer / 2) * 1600 * 2;
 			sunArray[0].position.z = 1600;
+
 
 			sunArray[1].position.x = Math.cos(timer / 8) * 2000 * 2;
 			sunArray[1].position.y = Math.sin(timer / 8) * 2000 * 2;
@@ -115,7 +121,10 @@ function animate(){ //Animerar scenen "detta är en loop"
 			sunArray[7].position.y = Math.sin(timer) * 8000 * 2;
 			sunArray[7].position.z = 9000;
 
-
+			for (var i = 0; i < 8; i++){
+				sunArray[i].rotation.x += rotate.x;
+				sunArray[i].rotation.y += rotate.y;
+			};
 
 			if (waitTimer >= 3){
 				sunMesh.rotation.x += 0.001;
