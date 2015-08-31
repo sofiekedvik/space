@@ -76,7 +76,7 @@ function animate(){ //Animerar scenen "detta är en loop"
 	THREE.AnimationHandler.update( clock.getDelta() );
 	renderer.render(scene, camera);
 	requestAnimationFrame(function(){
-		if (sunArray.length > 3) {
+		if (sunArray.length > 10) {
 			for(var i = 0; i < 8; i++){
 				// sunArray[i].position.x = Math.cos( timer / 2) * arrayX[i] * 3;
 				// sunArray[i].position.y = Math.cos( timer / 2) * arrayY[i] * 3;
@@ -91,56 +91,6 @@ function animate(){ //Animerar scenen "detta är en loop"
 				// sunArray[i].position.y = Math.sin(timer) * 1600 * 2;
 				sunArray[i].position.z = 1600;
 			}
-			// sunArray[0].position.x = Math.cos( timer / 2) * arrayX[0] * 3;
-			// sunArray[0].position.y = Math.cos( timer / 2) * arrayY[0] * 3;
-			// sunArray[0].position.z = Math.sin( timer / 2) * arrayZ[0] * 3;
-			// sunArray[0].rotation.y += 0.01;
-
-			// sunArray[1].position.x = Math.cos( timer / 4) * arrayX[1] * 3;
-			// sunArray[1].position.y = Math.cos( timer / 4) * arrayY[1] * 3;
-			// sunArray[1].position.z = Math.sin( timer / 4) * arrayZ[1] * 3;
-			// sunArray[1].rotation.y += 0.01;
-
-			// sunArray[2].position.x = Math.cos( timer / 2) * arrayX[2] * 2;
-			// sunArray[2].position.y = Math.cos( timer / 2) * arrayY[2] * 2;
-			// sunArray[2].position.z = Math.sin( timer / 2) * arrayZ[2] * 2;
-			// sunArray[2].rotation.y += 0.01;
-
-			// sunArray[3].position.x = Math.cos( timer / 2) * arrayX[3] * 2;
-			// sunArray[3].position.y = Math.cos( timer / 2) * arrayY[3] * 2;
-			// sunArray[3].position.z = Math.sin( timer / 2) * arrayZ[3] * 2;
-			// sunArray[3].rotation.y += 0.01;
-
-			// sunArray[4].position.x = Math.cos( timer / 3) * arrayX[4] * 4;
-			// sunArray[4].position.y = Math.cos( timer / 3) * arrayY[4] * 4;
-			// sunArray[4].position.z = Math.sin( timer / 3) * arrayZ[4] * 4;
-			// sunArray[4].rotation.y += 0.01;
-
-			// sunArray[5].position.x = Math.cos( timer / 2) * arrayX[5] * 4;
-			// sunArray[5].position.y = Math.cos( timer / 2) * arrayY[5] * 4;
-			// sunArray[5].position.z = Math.sin( timer / 2) * arrayZ[5] * 4;
-			// sunArray[5].rotation.y += 0.01;
-
-			// sunArray[6].position.x = Math.cos( timer / 2) * arrayX[6] * 2;
-			// sunArray[6].position.y = Math.cos( timer / 2) * arrayY[6] * 2;
-			// sunArray[6].position.z = Math.sin( timer / 2) * arrayZ[6] * 2;
-			// sunArray[6].rotation.y += 0.01;
-
-			// sunArray[7].position.x = Math.cos( timer / 4) * arrayX[7] * 5;
-			// sunArray[7].position.y = Math.cos( timer / 4) * arrayY[7] * 5;
-			// sunArray[7].position.z = Math.sin( timer / 4) * arrayZ[7] * 5;
-			// sunArray[7].rotation.y += 0.01;
-
-			// sunArray[8].position.x = Math.cos( timer / 3) * arrayX[8] * 2;
-			// sunArray[8].position.y = Math.cos( timer / 3) * arrayY[8] * 2;
-			// sunArray[8].position.z = Math.sin( timer / 3) * arrayZ[8] * 2;
-			// sunArray[8].rotation.y += 0.01;
-
-			// sunArray[9].position.x = Math.cos( timer / 5) * arrayX[9] * 4;
-			// sunArray[9].position.y = Math.cos( timer / 5) * arrayY[9] * 4;
-			// sunArray[9].position.z = Math.sin( timer / 5) * arrayZ[9] * 4;
-			// sunArray[9].rotation.y += 0.01;
-
 
 
 		}
@@ -196,7 +146,6 @@ function factLoader(){
 	var content = document.createElement("div");
 	container.appendChild(content);
 	content.className = "newContent";
-	content.innerHTML += "<span class='rightUp'>X</span>";
 	content.innerHTML += "<h3>" + information[0].title + "</h3>";
 	content.innerHTML += "<p>" + information[0].content + "</p>";
 	content.innerHTML += "<p>" + information[0].copyright + "</p>";
@@ -206,7 +155,6 @@ function factLoader(){
 
 informationBox.addEventListener("click", function(){
 	this.classList.remove("show");
-	console.log("hej");
 });
 
 function drawWorld(){ // Ritar världen utifrån vad som finns i sunArray kommer att ta in fler värden senare
@@ -231,12 +179,11 @@ function randomGenerator(){
 document.addEventListener("click", function(e){
 	var stringCount = 0;
 	if (e.srcElement.id == "planets"){
-		drawWorld();
-	}
-	if (e.srcElement.id == "light"){
 		for (var i = 0; i < 10; i++){
 			createObject.sphere2.create(randomGenerator() * randomGenerator ()); // Sätter unika id för de nya objekten
 		}
+		e.srcElement.classList.add("hide");
+		console.log(e);
 		drawWorld();
 	}
 	render();

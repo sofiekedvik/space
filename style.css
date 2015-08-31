@@ -1,5 +1,5 @@
 body, html {
-	font-family: "helvetica Neue", "helvetica", "arial", sans-serif;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
 	padding: 0;
 	margin: 0 auto;
 	width: 100%;
@@ -7,10 +7,10 @@ body, html {
 	overflow: hidden;
 	color:grey;
 	background: black;
+	font-weight:300;
 }
 
 canvas {
-
 	max-height: 100%;
 	max-width: 100%;
 	padding: 0;
@@ -25,10 +25,25 @@ canvas {
 
 .logo{
 	margin-top:-5px;
+	margin-left:30px;
 	font-size:20px;
 	letter-spacing: 1px;
 	font-weight: 300;
 	color:white;
+	float:left;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+.logo:hover{
+	opacity: 0.5;	
+}
+
+.hide{
+	display:none;
+	-webkit-transition: all .5s ease-out; 
+	-moz-transition: all .5s ease-out; 
+    transition: all .5s ease-out;
 }
 
 .logo span {
@@ -39,47 +54,44 @@ canvas {
 	font-size:14px;
 	font-weight:300;
 	letter-spacing: 2px;
-	text-transform: uppercase;
 	float: left;
 	margin-left: 20px;
 	cursor: pointer;
+	margin-top:-10px;
+	-webkit-transition: all .5s ease-out; 
+	-moz-transition: all .5s ease-out; 
+    transition: all .5s ease-out;
 }
 
 .buttons:hover{
-	/*opacity: 0.5;*/
-	color:white;
-	border-bottom: 1px solid white;
-	padding-bottom: 3px;
+	opacity: 0.5;
+	
 }
 
 .intro {
-	
 	margin: 0 auto;
-	font-size:11px;
 	font-weight: 300;
 	text-align: center;
 	color: white;
-
+	position:relative;
+	top:-100px;
+	width:800px;
 }
 
-.frame-1, .frame-2, .frame-3, .frame-4, .frame-5, .frame-6 {
-	font-size: 12px;
+.frame:nth-child(1n) {
+	font-size: 15px;
 	color: white;
 	opacity: 0;
-}
-
-#countedObjects {
-	position: fixed;
-	right: 0;
-	font-size: 60px;
-	font-weight:300;
+	position: absolute;
+	top:0;
+	left:5%;
+	right:5%;
 }
 
 #container-facts {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
-	/*margin: 0 auto;*/
 	border-radius: 10px;
 	background: rgba(175, 252, 240, .1);
 	width:500px;
@@ -90,9 +102,7 @@ canvas {
 	color:white;
 	padding:20px;
 	cursor: pointer;
-
 }
-
 
 #container-facts::after {
   content: "";

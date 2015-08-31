@@ -7,16 +7,12 @@
 		<link rel="stylesheet" href="style.css">
 	</head>
 
-	<body>
+	<body onload="preloadImages();">
 
 		<div id="overlay">
 
-			<div class="buttons"><h2 class="logo">Space <span>Bungalow</span></h2></div>
-			<div id="light" class="buttons">Add planets</div>
-
-			<!-- <div id="sun" class="buttons"><div id="countedObjects"></div><img src="images/star_icon.png"></div>
-			<div id="planets" class="buttons"><img src="images/planet_icon.png"></div>
-			<div id="light" class="buttons"><img src="images/sun_icon.png"></div> -->
+			<div><h2 class="logo">Space <span>Bungalow</span></h2></div>
+			<img src="images/planet_icon.png" id="planets" class="buttons">
 
 			<div id="container-facts" class="hidden">
 				<div class="newContent">
@@ -43,25 +39,40 @@
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/easing/EasePack.min.js"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/plugins/CSSPlugin.min.js"></script>
 		<script>
-			var body = document.getElementsByTagName("body");
-				console.log(body);
+		    // var images = [
+		    // 	"images/001.png",
+		    // 	"images/002.png",
+		    // 	"images/003.png",
+		    // 	"images/004.png",
+		    // 	"images/005.png",
+		    // 	"images/006.png",
 
+		    // ];
+
+		    // function preloadImages(images){
+		    	
+		    // }
+			// var body = document.getElementsByTagName("body");
 			var frameElements = document.getElementsByClassName("frame");
-			var tl = new TimelineLite();
-			tl.fromTo(frameElements[0], 0.5, {opacity: 0, fontSize: 0},{opacity:1, fontSize: 30, ease: Power3.easeOut}, "+=2"),
-			tl.to(frameElements[0], 1, {opacity: 0, ease: Power3.easeOut}, "+=2"),
-			tl.fromTo(frameElements[1], 0.5, {y: 0, opacity: 0, fontSize: 0},{y:-50, opacity:1, fontSize: 30, ease: Power3.easeOut}, "-=.2"),
-			tl.to(frameElements[1], 1, {opacity: 0, ease: Power3.easeOut}, "+=2"),
-			tl.fromTo(frameElements[2], 0.5, {y: 0,opacity: 0, fontSize: 0},{y:-100, opacity:1, fontSize: 30, ease: Power3.easeOut}, "+=.5"),
-			tl.to(frameElements[2], 1, {opacity: 0, ease: Power3.easeOut}, "+=2.5"),
-			tl.fromTo(frameElements[3], 0.5, {y: 0, opacity: 0, fontSize: 0},{y:-230, opacity:1, fontSize: 30, ease: Power3.easeOut}, "+=.5"),
-			tl.to(frameElements[3], 1, {opacity: 0, ease: Power3.easeOut}, "+=3"),
-			tl.fromTo(frameElements[4], 0.5, {y: 0, opacity: 0, fontSize: 0},{y:-300, opacity:1, fontSize: 30, ease: Power3.easeOut}, "+=.5"),
-			tl.fromTo(frameElements[5], 0.5, {y: 0, opacity: 0, fontSize: 0},{y:-300, opacity:1, fontSize: 30, ease: Power3.easeOut}, "+=.8"),
-			tl.to(frameElements[4], 1, {opacity: 0, ease: Power3.easeOut}, "+=2"),
-			tl.to(frameElements[5], 1, {opacity: 0, ease: Power3.easeOut}, "-=1"),
-			tl.fromTo(frameElements[6], 0.5, {y: 0, opacity: 0, fontSize: 0},{y:-400, opacity:1, fontSize: 30, ease: Power3.easeOut}, "+=.5"),
-			tl.to(frameElements[6], 1, {opacity: 0, ease: Power3.easeOut}, "+=3");
+			intro();
+			function intro(){
+
+				var tl = new TimelineLite();
+				tl.to(frameElements[0], 0.5,{fontSize: 25, opacity:1, ease: Power0.easeOut}, "+=2"),
+				tl.to(frameElements[0], 1, {opacity: 0, ease: Power0.easeOut}, "+=1.5"),
+				tl.to(frameElements[1], 0.5,{fontSize: 25, opacity:1, ease: Power0.easeOut}, "-=.3"),
+				tl.to(frameElements[1], 1, {opacity: 0, ease: Power0.easeOut}, "+=2"),
+				tl.to(frameElements[2], 0.5,{fontSize: 25, opacity:1, ease: Power0.easeOut}, "-=.3"),
+				tl.to(frameElements[2], 1, {opacity: 0, ease: Power0.easeOut}, "+=2"),
+				tl.to(frameElements[3], 0.5,{fontSize: 25, opacity:1, ease: Power0.easeOut}, "-=.3"),
+				tl.to(frameElements[3], 1, {opacity: 0, ease: Power0.easeOut}, "+=2"),
+				tl.to(frameElements[4], 0.5,{fontSize: 25, opacity:1, ease: Power0.easeOut}, "-=.3"),
+				tl.to(frameElements[4], 1, {opacity: 0, ease: Power0.easeOut}, "+=2"),
+				tl.to(frameElements[5], 0.5,{fontSize: 25, opacity:1, ease: Power0.easeOut}, "-=.3"),
+				tl.to(frameElements[5], 1, {opacity: 0, ease: Power0.easeOut}, "+=2");
+				
+
+			}
 			
 
 	
