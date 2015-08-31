@@ -29,25 +29,7 @@
 			Pan the camera around with left and right mousebutton and use mouse scroll to zoom in and out. Now let’s navigate through space and see what you can find!</div>
 		</div>
 
-		<script>
-			var xhr = new XMLHttpRequest();
-			var information = [];
-			xhr.onreadystatechange = function() {
 
-		        if(xhr.readyState === 4){
-		            var fact = JSON.parse(xhr.responseText);
-
-		            for(var facts in fact){
-		                information.push(fact[facts]);
-		            }
-		            return information;
-		        }
-
-			}
-
-			xhr.open("GET", "data/facts.json");
-			xhr.send();
-		</script>
 		<script src="js/three.js"></script>
 		<script src="js/trackballcontrols.js"></script>
 		<script src="js/skybox.js"></script>
