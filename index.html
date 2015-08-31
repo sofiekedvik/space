@@ -25,12 +25,13 @@
 
 
 			<div class="intro">
-				<p class="frame">Welcome to Space Bungalow</p>
-				<p class="frame">This is a demo made by Mikael Modig and Sofie Kedvik</p>
-				<p class="frame">It's a 3D world done with WEBGL and THREE.js Library.</p>
-				<p class="frame">Push the icon to manipulate the Bungalow and create your own galaxy!</p>
-				<p class="frame">Pan the camera around with left and right mousebutton and use mouse scroll to zoom in and out.</p>
-				<p class="frame">Now let’s navigate through space and see what you can find!</p>
+				<p class="frame">Welcome</p>
+				<p class="frame">This is a demo by Mikael Modig &amp; Sofie Kedvik</p>
+				<p class="frame">Space Bungalow is a 3D world made in WEBGL &amp; THREE.js </p>
+				<p class="frame">Push the icon to create a solarsystem</p>
+				<p class="frame">To pan the camera push down,</p>
+				<p class="frame">&amp; move to left or right</p>
+				<p class="frame">Start Navigate and see what can be found</p>
 			 </div>
 		</div>
 
@@ -55,32 +56,31 @@
 		</script>
 		<script src="js/three.js"></script>
 		<script src="js/trackballcontrols.js"></script>
-		<script src="js/skybox.js"></script>
-		<script src="js/main.js"></script>
-    	<script src="js/createlight.js"></script>
-		<script src="js/createobject.js"></script>
-		<script src="js/interaction.js"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/TweenLite.min.js"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/TimelineLite.min.js"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/easing/EasePack.min.js"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/plugins/CSSPlugin.min.js"></script>
 		<script>
-			
+			var body = document.getElementsByTagName("body");
+				console.log(body);
 
 			var frameElements = document.getElementsByClassName("frame");
 			var tl = new TimelineLite();
-			tl.fromTo(frameElements[0], 0.5, {opacity: 0, fontSize: 0},{opacity:1, fontSize: 40, ease: Quad.easeOut}, "+=2"),
-			tl.to(frameElements[0], 0.5, {opacity: 0, ease: Quad.easeIn}, "+=2"),
-			tl.fromTo(frameElements[1], 0.5, {y: 0, opacity: 0, fontSize: 0},{y:-50, opacity:1, fontSize: 40, ease: Quad.easeOut}, "+=.5"),
-			tl.to(frameElements[1], 0.5, {opacity: 0, ease: Quad.easeIn}, "+=2"),
-			tl.fromTo(frameElements[2], 0.5, {y: 0,opacity: 0, fontSize: 0},{y:-100, opacity:1, fontSize: 40, ease: Quad.easeOut}, "+=.5"),
-			tl.to(frameElements[2], 0.5, {opacity: 0, ease: Quad.easeIn}, "+=2"),
-			tl.fromTo(frameElements[3], 0.5, {y: 0, opacity: 0, fontSize: 0},{y:-230, opacity:1, fontSize: 40, ease: Quad.easeOut}, "+=.5"),
-			tl.to(frameElements[3], 0.5, {opacity: 0, ease: Quad.easeIn}, "+=2"),
-			tl.fromTo(frameElements[4], 0.5, {y: 0, opacity: 0, fontSize: 0},{y:-300, opacity:1, fontSize: 40, ease: Quad.easeOut}, "+=.5"),
-			tl.to(frameElements[4], 0.5, {opacity: 0, ease: Quad.easeIn}, "+=2"),
-			tl.fromTo(frameElements[5], 0.5, {y: 0, opacity: 0, fontSize: 0},{y:-400, opacity:1, fontSize: 40, ease: Quad.easeOut}, "+=.5"),
-			tl.to(frameElements[5], 0.5, {opacity: 0, ease: Quad.easeIn}, "+=2");
+			tl.fromTo(frameElements[0], 0.5, {opacity: 0, fontSize: 0},{opacity:1, fontSize: 30, ease: Power3.easeOut}, "+=2"),
+			tl.to(frameElements[0], 1, {opacity: 0, ease: Power3.easeOut}, "+=2"),
+			tl.fromTo(frameElements[1], 0.5, {y: 0, opacity: 0, fontSize: 0},{y:-50, opacity:1, fontSize: 30, ease: Power3.easeOut}, "-=.2"),
+			tl.to(frameElements[1], 1, {opacity: 0, ease: Power3.easeOut}, "+=2"),
+			tl.fromTo(frameElements[2], 0.5, {y: 0,opacity: 0, fontSize: 0},{y:-100, opacity:1, fontSize: 30, ease: Power3.easeOut}, "+=.5"),
+			tl.to(frameElements[2], 1, {opacity: 0, ease: Power3.easeOut}, "+=2.5"),
+			tl.fromTo(frameElements[3], 0.5, {y: 0, opacity: 0, fontSize: 0},{y:-230, opacity:1, fontSize: 30, ease: Power3.easeOut}, "+=.5"),
+			tl.to(frameElements[3], 1, {opacity: 0, ease: Power3.easeOut}, "+=3"),
+			tl.fromTo(frameElements[4], 0.5, {y: 0, opacity: 0, fontSize: 0},{y:-300, opacity:1, fontSize: 30, ease: Power3.easeOut}, "+=.5"),
+			tl.fromTo(frameElements[5], 0.5, {y: 0, opacity: 0, fontSize: 0},{y:-300, opacity:1, fontSize: 30, ease: Power3.easeOut}, "+=.8"),
+			tl.to(frameElements[4], 1, {opacity: 0, ease: Power3.easeOut}, "+=2"),
+			tl.to(frameElements[5], 1, {opacity: 0, ease: Power3.easeOut}, "-=1"),
+			tl.fromTo(frameElements[6], 0.5, {y: 0, opacity: 0, fontSize: 0},{y:-400, opacity:1, fontSize: 30, ease: Power3.easeOut}, "+=.5"),
+			tl.to(frameElements[6], 1, {opacity: 0, ease: Power3.easeOut}, "+=3");
+			
 
 		
 
@@ -88,6 +88,12 @@
 
 
 		</script>
+		<script src="js/skybox.js"></script>
+		<script src="js/main.js"></script>
+    	<script src="js/createlight.js"></script>
+		<script src="js/createobject.js"></script>
+		<script src="js/interaction.js"></script>
+		
 
 
 

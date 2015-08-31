@@ -6,7 +6,9 @@ var scene;
 var clock;
 var renderer;
 var sunArray = [];
+
 init();
+
 
 var particleMaterial = new THREE.MeshLambertMaterial({
 	emissive: "#ffffff",
