@@ -48,16 +48,30 @@ var materialStars = [
 var countedObjects;
 var createObject = { // Liten "motor" som bygger objekt och stoppar dem i en array (sunArray)
 	sphere: {
-		name: randomGenerator(), // Om klotet ska få ett unikt namn.
-		geometry: new THREE.SphereGeometry(5,50,50),
-		material: materialStars[0],
-		create: function(id){ // index från loopen som kallar på denna funktion
-			var mesh = new THREE.Mesh(this.geometry, this.material);
-			mesh.uuid = "star";
-			mesh.name = this.name * randomGenerator() + id; //sätter unikt id på alla klot
-			mesh.material.needsUpdate = true;
-			renderer.render(scene, camera);
-			sunArray.push(mesh);
+		create: function(){
+
+
+sunMesh.position.set(0,0,0);
+
+
+
+scene.add( sunMesh );
+
+
+
+sunMesh2.position.set(0,0,0);
+
+
+
+scene.add( sunMesh2 );
+
+// THE SUN GLOW
+
+sunMesh2.position.set(0,0,0);
+
+
+
+scene.add( sunMesh3 );
 		}
 	},
 
@@ -82,12 +96,35 @@ function randomImageGenerator(){
 	return Math.floor((Math.random() * 29));
 };
 
+//Skalar planeter slumpmässigt
 var max = 15;
 var min = 1;
 function randomPlanetGenerator(){
 	return Math.floor(Math.random()*(max-min+1)+min);
 };
 
+
+var sunGeometry3 = new THREE.SphereGeometry(1090,20,20);
+var sunMaterial3 = new THREE.MeshLambertMaterial( {
+	transparent: true,
+	opacity: 0.3,
+	emissive: "#ff6c00",
+	depthWrite: false
+} );
+var sunMesh3 = new THREE.Mesh(sunGeometry3, sunMaterial3);
+
+var sunMesh2 = new THREE.Mesh(sunGeometry2, sunMaterial2);
+
+// THE SUN GLOW
+var sunGeometry2 = new THREE.SphereGeometry(1090,20,20);
+var sunMaterial2 = new THREE.MeshLambertMaterial( {
+	transparent: true,
+	opacity: 0.3,
+	emissive: "#ff6c00",
+	depthWrite: false
+
+
+} );
 
 // THE SUN
 var sunGeometry = new THREE.SphereGeometry(1000,50,50);
@@ -99,42 +136,3 @@ var sunMaterial = new THREE.MeshLambertMaterial( {
 
 } );
 var sunMesh = new THREE.Mesh(sunGeometry, sunMaterial);
-sunMesh.position.set(0,0,0);
-
-
-
-scene.add( sunMesh );
-
-// THE SUN GLOW
-var sunGeometry2 = new THREE.SphereGeometry(1090,20,20);
-var sunMaterial2 = new THREE.MeshLambertMaterial( {
-	transparent: true,
-	opacity: 0.3,
-	emissive: "#ff6c00",
-	depthWrite: false
-//	emissive: "white"
-
-} );
-var sunMesh2 = new THREE.Mesh(sunGeometry2, sunMaterial2);
-sunMesh2.position.set(0,0,0);
-
-
-
-scene.add( sunMesh2 );
-
-// THE SUN GLOW
-var sunGeometry3 = new THREE.SphereGeometry(1090,20,20);
-var sunMaterial3 = new THREE.MeshLambertMaterial( {
-	transparent: true,
-	opacity: 0.3,
-	emissive: "#ff6c00",
-	depthWrite: false
-//	emissive: "white"
-
-} );
-var sunMesh3 = new THREE.Mesh(sunGeometry3, sunMaterial3);
-sunMesh2.position.set(0,0,0);
-
-
-
-scene.add( sunMesh3 );

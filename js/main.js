@@ -79,7 +79,9 @@ function animate(){ //Animerar scenen "detta är en loop"
 	renderer.render(scene, camera);
 	requestAnimationFrame(function(){
 		if (sunArray.length > 6) {
-
+			while (waitTimer <= 3){
+			waitTimer += 0.01;
+			};
 
 			sunArray[0].position.x = Math.cos(timer  / 2) * 1600 * 2;
 			sunArray[0].position.y = Math.sin(timer / 2) * 1600 * 2;
@@ -113,19 +115,19 @@ function animate(){ //Animerar scenen "detta är en loop"
 			sunArray[7].position.y = Math.sin(timer) * 8000 * 2;
 			sunArray[7].position.z = 9000;
 
+
+
+			if (waitTimer >= 3){
+				sunMesh.rotation.x += 0.001;
+				sunMesh2.rotation.y += 0.001;
+				sunMesh3.rotation.x += 0.001;
+			};
 		}
-
-
-
-
-		sunMesh.rotation.x += 0.001;
-		sunMesh2.rotation.y += 0.001;
-		sunMesh3.rotation.x += 0.001;
 		animate();
 	});
 
 }
-
+var waitTimer = 0;
 
 function detectLeftButton(){
 	evt = window.event;
@@ -200,9 +202,10 @@ document.addEventListener("click", function(e){
 	var stringCount = 0;
 
 	if (e.srcElement.id == "planets"){
-		for (var i = 0; i < 10; i++){
+		for (var i = 0; i < 8; i++){
 			createObject.sphere2.create(randomGenerator() * randomGenerator ()); // Sätter unika id för de nya objekten
 		}
+		createObject.sphere.create();
 		e.srcElement.classList.add("hide");
 		drawWorld();
 	}
