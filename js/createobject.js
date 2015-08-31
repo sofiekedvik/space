@@ -62,8 +62,7 @@ var createObject = { // Liten "motor" som bygger objekt och stoppar dem i en arr
 	},
 
 	sphere2: {
-		geometry: new THREE.SphereGeometry(200,50,50),
-//		material: materialPlanets[0],
+		geometry: new THREE.SphereGeometry(randomPlanetGenerator(),50,50),
 		material: materialPlanets.material0,
 		name: randomGenerator(), // Om klotet ska få ett unikt namn.
 		create: function(id){ // index från loopen som kallar på denna funktion
@@ -81,6 +80,12 @@ var createObject = { // Liten "motor" som bygger objekt och stoppar dem i en arr
 };
 function randomImageGenerator(){
 	return Math.floor((Math.random() * 29));
+};
+
+var max = 15;
+var min = 1;
+function randomPlanetGenerator(){
+	return Math.floor(Math.random()*(max-min+1)+min);
 };
 
 
