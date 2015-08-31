@@ -7,7 +7,7 @@
 		<link rel="stylesheet" href="style.css">
 	</head>
 
-	<body onload="preloadImages();">
+	<body>
 
 		<div id="overlay">
 			<div><h2 class="logo">Space <span>Bungalow</span></h2></div>
@@ -20,14 +20,28 @@
 			</div>
 
 
-			<div class="intro">
-				<p class="frame">Welcome</p>
+			<div id="intro">
+				<img src="images/txt/txt_1.png" class="frame">
+				<img src="images/txt/txt_2.png" class="frame">
+				<img src="images/txt/txt_3.png" class="frame">
+				<img src="images/txt/txt_4.png" class="frame">
+				<img src="images/txt/txt_5.png" class="frame">
+				<img src="images/txt/txt_6.png" class="frame">
+				<img src="images/txt/txt_7.png" class="frame">
+				<img src="images/txt/txt_8.png" class="frame">
+				<img src="images/txt/txt_9.png" class="frame">
+				<img src="images/txt/txt_10.png" class="frame">
+				<img src="images/txt/txt_11.png" class="frame">
+				<img src="images/txt/txt_12.png" class="frame">
+				<img src="images/txt/txt_13.png" class="frame">
+				<img src="images/txt/txt_14.png" class="frame">
+				<!-- <p class="frame">Welcome</p>
 				<p class="frame">This is a demo by Mikael Modig &amp; Sofie Kedvik</p>
 				<p class="frame">Space Bungalow is a 3D world made in WEBGL &amp; THREE.js </p>
 				<p class="frame">Push the icon to create a solarsystem</p>
 				<p class="frame">To pan the camera push down,</p>
 				<p class="frame">&amp; move to left or right</p>
-				<p class="frame">Start Navigate and see what can be found</p>
+				<p class="frame">Start Navigate and see what can be found</p> -->
 			 </div>
 		</div>
 
@@ -53,23 +67,38 @@
 		    	
 		    // }
 			// var body = document.getElementsByTagName("body");
+			// var empty = [];
 			var frameElements = document.getElementsByClassName("frame");
+			var introKill = document.getElementById("intro");
+			console.log(introKill);
+			// for(var i = 0; i < frameElements.length; i++){
+			// 		empty += frameElements[i];
+			// 	}
 			intro();
+
 			function intro(){
 
 				var tl = new TimelineLite();
-				tl.to(frameElements[0], 0.5,{fontSize: 25, opacity:1, ease: Power0.easeOut}, "+=2"),
-				tl.to(frameElements[0], 1, {opacity: 0, ease: Power0.easeOut}, "+=1.5"),
-				tl.to(frameElements[1], 0.5,{fontSize: 25, opacity:1, ease: Power0.easeOut}, "-=.3"),
-				tl.to(frameElements[1], 1, {opacity: 0, ease: Power0.easeOut}, "+=2"),
-				tl.to(frameElements[2], 0.5,{fontSize: 25, opacity:1, ease: Power0.easeOut}, "-=.3"),
-				tl.to(frameElements[2], 1, {opacity: 0, ease: Power0.easeOut}, "+=2"),
-				tl.to(frameElements[3], 0.5,{fontSize: 25, opacity:1, ease: Power0.easeOut}, "-=.3"),
-				tl.to(frameElements[3], 1, {opacity: 0, ease: Power0.easeOut}, "+=2"),
-				tl.to(frameElements[4], 0.5,{fontSize: 25, opacity:1, ease: Power0.easeOut}, "-=.3"),
-				tl.to(frameElements[4], 1, {opacity: 0, ease: Power0.easeOut}, "+=2"),
-				tl.to(frameElements[5], 0.5,{fontSize: 25, opacity:1, ease: Power0.easeOut}, "-=.3"),
-				tl.to(frameElements[5], 1, {opacity: 0, ease: Power0.easeOut}, "+=2");
+				tl.to(frameElements[0], 0.7,{opacity:1, ease: Power0.easeOut}, "+=3"),
+				tl.fromTo(frameElements[1], 0.5,{opacity:0, y:-20}, {opacity:1, y:0, ease: Power0.easeOut}, "+=.5"),	
+				tl.fromTo(frameElements[2], 0.5,{opacity:0, x:-30}, {opacity:1, x:0, ease: Power0.easeOut}, "+=.5"),
+				tl.fromTo(frameElements[3], 0.5,{opacity:0, x:20}, {opacity:1, x:0, ease: Power0.easeOut}, "-=.3"),
+				tl.to(frameElements[4], 0.5,{opacity:1, ease: Power0.easeOut}, "+=.5"),
+				tl.fromTo(frameElements[5], 0.5,{width: 0, opacity: 0,},{width: 160, opacity:1, ease: Quad.easeOut}, "+=.1"),
+				tl.to(frameElements[5], 0.3,{width: 125, ease: Quad.easeOut}),
+				tl.to(frameElements[6], 0.8,{opacity:1, ease: Power0.easeOut}, "+=.3"),
+				tl.to(frameElements[7], 0.5,{opacity:1, ease: Power0.easeOut}, "+=.3"),
+				tl.to(frameElements[8], 0.7,{opacity:1, ease: Power0.easeOut}, "+=.5"),
+				tl.to(frameElements[9], 0.7,{opacity:1, ease: Power0.easeOut}, "+=.2"),
+				tl.to(frameElements[10], 0.5,{opacity:1, ease: Power0.easeOut}, "-=.2"),
+				tl.to(frameElements[11], 0.5,{opacity:1, ease: Power0.easeOut}, "+=.3"),
+				tl.to(introKill, 0.7,{x:"-=50",rotationY: "-=60", transformOrigin: "left center", ease: Quad.easeOut}, "-=.4"),
+				tl.to(introKill, 0.7,{x:"+=50",rotationY: "+=60", transformOrigin: "left center", ease: Quad.easeIn}),
+				tl.to(frameElements[12], 0.7,{opacity:1, ease: Power0.easeOut}),
+				tl.to(frameElements[13], 0.5,{opacity:1, ease: Power0.easeOut}, "+=.4"),
+				tl.to(introKill, 0.7,{x:"+=50", rotationY: "-=60", transformOrigin: "right center", ease: Quad.easeOut}, "-=.4"),
+				tl.to(introKill, 0.7,{x:"-=50",rotationY: "+=60", transformOrigin: "right center", ease: Quad.easeIn}),
+				tl.to(frameElements, 0.5,{opacity:0, ease: Power0.easeIn}, "+=2.5");
 				
 
 			}

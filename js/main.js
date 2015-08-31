@@ -200,7 +200,7 @@ document.addEventListener("click", function(e){
 	var stringCount = 0;
 
 	if (e.srcElement.id == "planets"){
-		for (var i = 0; i < 10; i++){
+		for (var i = 0; i < 8; i++){
 			createObject.sphere2.create(randomGenerator() * randomGenerator ()); // Sätter unika id för de nya objekten
 		}
 		e.srcElement.classList.add("hide");
