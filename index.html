@@ -35,25 +35,7 @@
 			 </div>
 		</div>
 
-		<script>
-			var xhr = new XMLHttpRequest();
-			var information = [];
-			xhr.onreadystatechange = function() {
 
-		        if(xhr.readyState === 4){
-		            var fact = JSON.parse(xhr.responseText);
-
-		            for(var facts in fact){
-		                information.push(fact[facts]);
-		            }
-		            return information;
-		        }
-
-			}
-
-			xhr.open("GET", "data/facts.json");
-			xhr.send();
-		</script>
 		<script src="js/three.js"></script>
 		<script src="js/trackballcontrols.js"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/TweenLite.min.js"></script>
@@ -82,10 +64,7 @@
 			tl.to(frameElements[6], 1, {opacity: 0, ease: Power3.easeOut}, "+=3");
 			
 
-		
-
-
-
+	
 
 		</script>
 		<script src="js/skybox.js"></script>

@@ -26,7 +26,8 @@ var posX,
 var particleGeometry = new THREE.CircleGeometry(50,20);
 var particleMesh = new THREE.Mesh(particleGeometry, particleMaterial);
 
-var particleCount = 300;
+var particleCount = 200;
+
 
 for (var i = 0; i < particleCount; i++){
 	posX = randomGenerator() * 2;
@@ -77,10 +78,18 @@ function animate(){ //Animerar scenen "detta är en loop"
 	requestAnimationFrame(function(){
 		if (sunArray.length > 3) {
 			for(var i = 0; i < 8; i++){
-				sunArray[i].position.x = Math.cos( timer / 2) * arrayX[i] * 3;
-				sunArray[i].position.y = Math.cos( timer / 2) * arrayY[i] * 3;
-				sunArray[i].position.z = Math.sin( timer / 2) * arrayZ[i] * 3;
-				sunArray[i].rotation.y += 0.01;
+				// sunArray[i].position.x = Math.cos( timer / 2) * arrayX[i] * 3;
+				// sunArray[i].position.y = Math.cos( timer / 2) * arrayY[i] * 3;
+				// sunArray[i].position.z = Math.sin( timer / 2) * arrayZ[i] * 3;
+				// sunArray[i].rotation.y += 0.01;
+
+
+				sunArray[i].position.x = Math.cos(timer) * 1400 * 2;
+				sunArray[i].position.y = Math.sin(timer) * 1400 * 2;
+
+				// sunArray[i].position.x = Math.cos(timer) * 1200 * 2;
+				// sunArray[i].position.y = Math.sin(timer) * 1600 * 2;
+				sunArray[i].position.z = 1600;
 			}
 			// sunArray[0].position.x = Math.cos( timer / 2) * arrayX[0] * 3;
 			// sunArray[0].position.y = Math.cos( timer / 2) * arrayY[0] * 3;
@@ -131,7 +140,9 @@ function animate(){ //Animerar scenen "detta är en loop"
 			// sunArray[9].position.y = Math.cos( timer / 5) * arrayY[9] * 4;
 			// sunArray[9].position.z = Math.sin( timer / 5) * arrayZ[9] * 4;
 			// sunArray[9].rotation.y += 0.01;
-			//
+
+
+
 		}
 		sunMesh.rotation.x += 0.001;
 		sunMesh2.rotation.y += 0.001;
@@ -230,6 +241,24 @@ document.addEventListener("click", function(e){
 	}
 	render();
 });
+
+var xhr = new XMLHttpRequest();
+var information = [];
+xhr.onreadystatechange = function() {
+
+	if(xhr.readyState === 4){
+		var fact = JSON.parse(xhr.responseText);
+
+		for(var facts in fact){
+			information.push(fact[facts]);
+		}
+		return information;
+	}
+
+}
+
+xhr.open("GET", "data/facts.json");
+xhr.send();
 
 
 
