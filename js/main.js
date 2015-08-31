@@ -19,14 +19,14 @@ var particleMaterial = new THREE.MeshLambertMaterial({
 });
 
 var posX,
-	posY,
-	posZ,
-	cloneParticle;
+		posY,
+		posZ,
+		cloneParticle;
 
 var particleGeometry = new THREE.CircleGeometry(50,20);
 var particleMesh = new THREE.Mesh(particleGeometry, particleMaterial);
 
-var particleCount = 200;
+var particleCount = 500;
 
 
 for (var i = 0; i < particleCount; i++){
@@ -36,8 +36,8 @@ for (var i = 0; i < particleCount; i++){
 	cloneParticle = particleMesh.clone();
 	cloneParticle.position.set(posX, posY, posZ);
 	cloneParticle.rotation.set(posX, posY, posZ);
-	cloneParticle.position.normalize();
-	cloneParticle.position.multiplyScalar( 30000 );
+
+
 	scene.add(cloneParticle);
 };
 
@@ -58,6 +58,8 @@ function init(){
 	scene = new THREE.Scene();
 	renderer = new THREE.WebGLRenderer();
 	renderer.setSize(window.innerWidth, window.innerHeight);
+	renderer.setClearColor( 0x000000, 0.5 );
+
 	document.body.appendChild(renderer.domElement);
 
 };
@@ -76,24 +78,46 @@ function animate(){ //Animerar scenen "detta är en loop"
 	THREE.AnimationHandler.update( clock.getDelta() );
 	renderer.render(scene, camera);
 	requestAnimationFrame(function(){
-		if (sunArray.length > 10) {
-			for(var i = 0; i < 8; i++){
-				// sunArray[i].position.x = Math.cos( timer / 2) * arrayX[i] * 3;
-				// sunArray[i].position.y = Math.cos( timer / 2) * arrayY[i] * 3;
-				// sunArray[i].position.z = Math.sin( timer / 2) * arrayZ[i] * 3;
-				// sunArray[i].rotation.y += 0.01;
+		if (sunArray.length > 6) {
 
 
-				sunArray[i].position.x = Math.cos(timer) * 1400 * 2;
-				sunArray[i].position.y = Math.sin(timer) * 1400 * 2;
+			sunArray[0].position.x = Math.cos(timer  / 2) * 1600 * 2;
+			sunArray[0].position.y = Math.sin(timer / 2) * 1600 * 2;
+			sunArray[0].position.z = 1600;
 
-				// sunArray[i].position.x = Math.cos(timer) * 1200 * 2;
-				// sunArray[i].position.y = Math.sin(timer) * 1600 * 2;
-				sunArray[i].position.z = 1600;
-			}
+			sunArray[1].position.x = Math.cos(timer / 8) * 2000 * 2;
+			sunArray[1].position.y = Math.sin(timer / 8) * 2000 * 2;
+			sunArray[1].position.z = 3000;
 
+			sunArray[2].position.x = Math.cos(timer / 4) * 3000 * 2;
+			sunArray[2].position.y = Math.sin(timer / 4) * 3000 * 2;
+			sunArray[2].position.z = 4000;
+
+			sunArray[3].position.x = Math.cos(timer / 3) * 4000 * 2;
+			sunArray[3].position.y = Math.sin(timer / 3) * 4000 * 2;
+			sunArray[3].position.z = 5000;
+
+			sunArray[4].position.x = Math.cos(timer / 6) * 5000 * 2;
+			sunArray[4].position.y = Math.sin(timer / 6) * 5000 * 2;
+			sunArray[4].position.z = 6000;
+
+			sunArray[5].position.x = Math.cos(timer / 2) * 6000 * 2;
+			sunArray[5].position.y = Math.sin(timer / 2) * 6000 * 2;
+			sunArray[5].position.z = 7000;
+
+			sunArray[6].position.x = Math.cos(timer / 10) * 7000 * 2;
+			sunArray[6].position.y = Math.sin(timer / 10) * 7000 * 2;
+			sunArray[6].position.z = 8000;
+
+			sunArray[7].position.x = Math.cos(timer) * 8000 * 2;
+			sunArray[7].position.y = Math.sin(timer) * 8000 * 2;
+			sunArray[7].position.z = 9000;
 
 		}
+
+
+
+
 		sunMesh.rotation.x += 0.001;
 		sunMesh2.rotation.y += 0.001;
 		sunMesh3.rotation.x += 0.001;
@@ -158,14 +182,10 @@ informationBox.addEventListener("click", function(){
 });
 
 function drawWorld(){ // Ritar världen utifrån vad som finns i sunArray kommer att ta in fler värden senare
+	var scale;
 	for (var i = 0; i < sunArray.length; i++){
-		sunArray[i].position.set(randomGenerator() ,randomGenerator(),randomGenerator());
-		var x = sunArray[i].position.x;
-		var y = sunArray[i].position.y;
-		var z = sunArray[i].position.z;
-		arrayX.push(x);
-		arrayY.push(y);
-		arrayZ.push(z);
+		scale = randomPlanetGenerator();
+		sunArray[i].scale.set(scale,scale,scale);
 		scene.add(sunArray[i]);
 	}
 }
@@ -178,12 +198,12 @@ function randomGenerator(){
 
 document.addEventListener("click", function(e){
 	var stringCount = 0;
+
 	if (e.srcElement.id == "planets"){
 		for (var i = 0; i < 10; i++){
 			createObject.sphere2.create(randomGenerator() * randomGenerator ()); // Sätter unika id för de nya objekten
 		}
 		e.srcElement.classList.add("hide");
-		console.log(e);
 		drawWorld();
 	}
 	render();
