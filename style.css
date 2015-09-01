@@ -35,6 +35,10 @@ canvas {
 	cursor: pointer;
 }
 
+.logo span {
+	font-weight:600;
+}
+
 .logo:hover{
 	opacity: 0.5;	
 }
@@ -46,9 +50,6 @@ canvas {
     transition: all .5s ease-out;
 }
 
-.logo span {
-	font-weight:500;
-}
 
 .buttons {
 	font-size:14px;
