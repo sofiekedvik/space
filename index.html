@@ -35,6 +35,7 @@
 				<img src="images/txt/txt_12.png" class="frame" alt="left">
 				<img src="images/txt/txt_13.png" class="frame" alt="or">
 				<img src="images/txt/txt_14.png" class="frame" alt="right">
+				<img src="images/txt/txt_15.png" class="frame" alt="Now click and discover">
 			 </div>
 		</div>
 
@@ -69,14 +70,16 @@
 				tl.to(frameElements[8], 0.7,{opacity:1, ease: Power0.easeOut}, "+=.7"),
 				tl.to(frameElements[9], 0.5,{opacity:1, ease: Power0.easeOut}, "-=.7"),
 				tl.to(frameElements[10], 0.5,{opacity:1, ease: Power0.easeOut}, "+=.3"),
-				tl.to(introKill, 0.7,{rotationY: "-=90", transformOrigin: "left 50% -200", ease: Power2.easeOut}, "+=.7"),
+				tl.to(introKill, 0.7,{rotationY: "-=90", transformOrigin: "left 50% -200", ease: Power2.easeOut}, "+=.3"),
 				tl.to(introKill, 0.7,{rotationY: "+=90", transformOrigin: "left 50% -200", ease: Power2.easeOut}),
 				tl.to(frameElements[11], 0.5,{opacity:1, ease: Power0.easeOut}),
 				tl.to(frameElements[12], 0.5,{opacity:1, ease: Power0.easeOut}, "+=.3"),
-				tl.to(introKill, 0.7,{rotationY: "+=90", transformOrigin: "right 50% -200", ease: Power2.easeOut}, "+=.5"),
+				tl.to(introKill, 0.7,{rotationY: "+=90", transformOrigin: "right 50% -200", ease: Power2.easeOut}, "+=.2"),
 				tl.to(introKill, 0.7,{rotationY: "-=90", transformOrigin: "right 50% -200", ease: Power2.easeOut}),
 				tl.to(frameElements[13], 0.5,{opacity:1, ease: Power0.easeOut}),
-				tl.to(frameElements, 0.7,{opacity:0, ease: Power0.easeIn}, "+=2.5"),
+				tl.to(frameElements, 0.7,{opacity:0, ease: Power0.easeIn}, "+=1.5"),
+				tl.to(frameElements[14], 0.7,{opacity:1, ease: Power0.easeOut}, "+=.6"),
+				tl.to(frameElements[14], 0.7,{opacity:0, scale: 2, ease: Power0.easeIn}, "+=.6"),
 				tl.to(icon,0.3,{scale:1.2, ease: Quad.easeOut}, "+=1"),
 				tl.to(icon,0.3,{scale:1, ease: Quad.easeOut}),
 				tl.to(icon,0.3,{scale:1.2, ease: Quad.easeOut}),
@@ -85,6 +88,7 @@
 				tl.to(icon,0.3,{scale:1, ease: Quad.easeOut}),
 				tl.to(icon,0.3,{scale:1.2, ease: Quad.easeOut}),
 				tl.to(icon,0.3,{scale:1, ease: Quad.easeOut});
+				
 
 			}
 

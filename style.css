@@ -103,6 +103,7 @@ Intro and animation
 .frame:nth-child(12) { left:219px; top:193px;}
 .frame:nth-child(13) { left:273px; top:198px;}
 .frame:nth-child(14) { left:301px; top:193px;}
+.frame:nth-child(15) { left:153px; top:53px;}
 
 #container-facts {
 	-webkit-box-sizing: border-box;
